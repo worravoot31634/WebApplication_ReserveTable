@@ -297,6 +297,9 @@
     <Content Include="Content\images\FoodAndDrink\Drinks\f5_3.png" />
     <Content Include="Content\images\FoodAndDrink\Drinks\f5_4.png" />
     <Content Include="Content\images\FoodAndDrink\Drinks\f5_5.png" />
+    <Content Include="Content\images\headMenu.png" />
+    <Content Include="Content\images\MenuLogo.png" />
+    <Content Include="Content\images\sagura.png" />
     <Content Include="Content\images\T_1.png" />
     <Content Include="Content\images\T_10.png" />
     <Content Include="Content\images\T_11.png" />
@@ -397,6 +400,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\BookTable\Index.cshtml" />
     <Content Include="Views\BookTable\OrderMenu.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
