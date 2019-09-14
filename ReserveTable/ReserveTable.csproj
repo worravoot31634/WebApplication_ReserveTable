@@ -272,13 +272,21 @@
     <Content Include="Content\clock\jquery-clockpicker.min.css" />
     <Content Include="Content\clock\jquery-clockpicker.min.js" />
     <Content Include="Content\clock\standalone.css" />
+    <Content Include="Content\Home\image\f1_1.png" />
+    <Content Include="Content\Home\image\f1_2.png" />
+    <Content Include="Content\Home\image\f1_3.png" />
+    <Content Include="Content\Home\image\f1_4.png" />
+    <Content Include="Content\Home\image\f1_5.png" />
     <Content Include="Content\Home\image\f3_1.png" />
     <Content Include="Content\Home\image\f3_2.png" />
     <Content Include="Content\Home\image\f3_3.png" />
     <Content Include="Content\Home\image\f3_4.png" />
     <Content Include="Content\Home\image\f3_5.png" />
+    <Content Include="Content\Home\image\font_menu.png" />
+    <Content Include="Content\Home\image\font_pro.png" />
     <Content Include="Content\Home\image\Food_intro.png" />
     <Content Include="Content\Home\image\home.png" />
+    <Content Include="Content\Home\image\Pro.png" />
     <Content Include="Content\images\FoodAndDrink\Snacks\f2_1.png" />
     <Content Include="Content\images\FoodAndDrink\Snacks\f2_2.png" />
     <Content Include="Content\images\FoodAndDrink\Snacks\f2_3.png" />
@@ -405,6 +413,11 @@
     <Content Include="Views\BookTable\Index.cshtml" />
     <Content Include="Views\BookTable\OrderMenu.cshtml" />
     <Content Include="Views\Shared\_Layout_Login.cshtml" />
+    <Content Include="Views\Home\Promotion1.cshtml" />
+    <Content Include="Views\Home\Promotion2.cshtml" />
+    <Content Include="Views\Home\Promotion3.cshtml" />
+    <Content Include="Views\Home\Promotion4.cshtml" />
+    <Content Include="Views\Home\Promotion5.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
