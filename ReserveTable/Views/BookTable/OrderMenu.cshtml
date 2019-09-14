@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewBag.Title = "OrderMenu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table align="center">
+    <tr>
+        <td><img width="100%" src="https://scontent.fbkk12-1.fna.fbcdn.net/v/t1.15752-9/70449543_729756914129617_5151916866163179520_n.png?_nc_cat=101&_nc_oc=AQleCGpnokCueU1zNW3enQaiWBvwe_ITdOyJGEKxEc2cb_eHSNVhK9a69l5Y9hAKDIsmZDv_Neu75-Hd-An-GsDg&_nc_ht=scontent.fbkk12-1.fna&oh=2e2f3d9ff99d2f46b17676ca54af380f&oe=5DFEF17A" /></td>
+
+    </tr>
+</table>
+
+<table width="60%" align="center">
+    <tr>
+        <td style="font-size:17px; background-color:#333; color:white;" class="w3-center">
+            <b><p>เลือกโต๊ะ</p></b>
+
+        </td>
+
+        <td style="font-size:17px; background-color:#EC808D; color:white;" class="w3-center">
+            <p>เลือกอาหาร</p>
+        </td>
+        <td style="font-size:17px; background-color:#333; color:white;" class="w3-center">
+            <p>ชำระเงิน</p>
+        </td>
+    </tr>
+
+</table>
+
+
+<form>
+
+
+    <table width="60%" align="center">
+        <tr>
+            <td calspan="3" style="font-size:17px; background-color:lightgrey;" class="w3-center">
+
+                <div class="w3-cell w3-red">อาหารจานเดียว</div>
+                
+               
+
+                   
+
+
+
+            </td>
+        </tr>
+
+
+
+    </table>
+
+
+
+</form>
+
+<style>
+    ul {
+        list-style-type: none;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    input[type="checkbox"][id^="cb"] {
+        display: none;
+    }
+
+    label {
+        display: block;
+        position: relative;
+        cursor: pointer;
+    }
+
+        label:before {
+            background-color: white;
+            color: white;
+            content: " ";
+            display: block;
+            border-radius: 50%;
+            border: 1px solid grey;
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 28px;
+            transition-duration: 0.4s;
+            transform: scale(0);
+        }
+
+        label img {
+            height: 100%;
+            width: 100%;
+            transition-duration: 0.2s;
+            transform-origin: 50% 50%;
+        }
+
+    :checked + label {
+        border-color: #ddd;
+    }
+
+        :checked + label:before {
+            content: "✓";
+            background-color: forestgreen;
+            transform: scale(1);
+        }
+
+        :checked + label img {
+            transform: scale(0.9);
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px #EC808D;
+            z-index: -1;
+        }
+
+    .checkRedColor {
+        background-color: rgba(255, 0, 0, 0.7);
+        border-radius: 20px;
+    }
+
+    .checkOrangeColor {
+        background-color: rgba(255, 106, 0, 0.7);
+        border-radius: 20px;
+    }
+</style>
+
+
+<script type="text/javascript">
+
+
+
+
+    $(document).ready(function () {
+        $("input").click(function () {
+            var favorite = [];
+            $.each($("input[name='tableNo']:checked"), function () {
+                favorite.push($(this).val());
+            });
+            document.getElementById("table-total").innerHTML = favorite.join(", ");
+
+        });
+    });
+</script>
+
+
+

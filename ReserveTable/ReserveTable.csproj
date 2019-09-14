@@ -49,6 +49,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -167,9 +169,62 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Models\Account.cs">
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Models\AccountDetails.cs">
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Booking.cs">
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookingDetails.cs">
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BookTableController.cs" />
+    <Compile Include="Models\BookingModels.cs" />
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Models\Member.cs">
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Menu.cs">
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MenuDetails.cs">
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NanRestaurantsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NanRestaurantsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NanRestaurantsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NanRestaurantsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NanRestaurantsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderDetails.cs">
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Orders.cs">
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Payment.cs">
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tables.cs">
+      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,12 +239,114 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\clock\assets\css\bootstrap-theme.css" />
+    <Content Include="Content\clock\assets\css\bootstrap-theme.min.css" />
+    <Content Include="Content\clock\assets\css\bootstrap.css" />
+    <Content Include="Content\clock\assets\css\bootstrap.min.css" />
+    <Content Include="Content\clock\assets\css\github.min.css" />
+    <Content Include="Content\clock\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\clock\assets\images\screenshot-1.png" />
+    <Content Include="Content\clock\assets\js\bootstrap.js" />
+    <Content Include="Content\clock\assets\js\bootstrap.min.js" />
+    <Content Include="Content\clock\assets\js\highlight.min.js" />
+    <Content Include="Content\clock\assets\js\html5shiv.js" />
+    <Content Include="Content\clock\assets\js\jquery.js" />
+    <Content Include="Content\clock\assets\js\jquery.min.js" />
+    <Content Include="Content\clock\assets\js\respond.min.js" />
+    <Content Include="Content\clock\bootstrap-clockpicker.css" />
+    <Content Include="Content\clock\bootstrap-clockpicker.js" />
+    <Content Include="Content\clock\bootstrap-clockpicker.min.css" />
+    <Content Include="Content\clock\bootstrap-clockpicker.min.js" />
+    <Content Include="Content\clock\clockpicker.css" />
+    <Content Include="Content\clock\clockpicker.js" />
+    <Content Include="Content\clock\dist\bootstrap-clockpicker.css" />
+    <Content Include="Content\clock\dist\bootstrap-clockpicker.js" />
+    <Content Include="Content\clock\dist\bootstrap-clockpicker.min.css" />
+    <Content Include="Content\clock\dist\bootstrap-clockpicker.min.js" />
+    <Content Include="Content\clock\dist\jquery-clockpicker.css" />
+    <Content Include="Content\clock\dist\jquery-clockpicker.js" />
+    <Content Include="Content\clock\dist\jquery-clockpicker.min.css" />
+    <Content Include="Content\clock\dist\jquery-clockpicker.min.js" />
+    <Content Include="Content\clock\jquery-clockpicker.css" />
+    <Content Include="Content\clock\jquery-clockpicker.js" />
+    <Content Include="Content\clock\jquery-clockpicker.min.css" />
+    <Content Include="Content\clock\jquery-clockpicker.min.js" />
+    <Content Include="Content\clock\standalone.css" />
+    <Content Include="Content\images\FoodAndDrink\Snacks\f2_1.png" />
+    <Content Include="Content\images\FoodAndDrink\Snacks\f2_2.png" />
+    <Content Include="Content\images\FoodAndDrink\Snacks\f2_3.png" />
+    <Content Include="Content\images\FoodAndDrink\Snacks\f2_4.png" />
+    <Content Include="Content\images\FoodAndDrink\Snacks\f2_5.png" />
+    <Content Include="Content\images\FoodAndDrink\Dessert\f4_1.png" />
+    <Content Include="Content\images\FoodAndDrink\Dessert\f4_2.png" />
+    <Content Include="Content\images\FoodAndDrink\Dessert\f4_3.png" />
+    <Content Include="Content\images\FoodAndDrink\Dessert\f4_4.png" />
+    <Content Include="Content\images\FoodAndDrink\Dessert\f4_5.png" />
+    <Content Include="Content\images\FoodAndDrink\จานเดียว\f1_1.png" />
+    <Content Include="Content\images\FoodAndDrink\จานเดียว\f1_2.png" />
+    <Content Include="Content\images\FoodAndDrink\จานเดียว\f1_3.png" />
+    <Content Include="Content\images\FoodAndDrink\จานเดียว\f1_4.png" />
+    <Content Include="Content\images\FoodAndDrink\จานเดียว\f1_5.png" />
+    <Content Include="Content\images\FoodAndDrink\Sushi\f3_1.png" />
+    <Content Include="Content\images\FoodAndDrink\Sushi\f3_2.png" />
+    <Content Include="Content\images\FoodAndDrink\Sushi\f3_3.png" />
+    <Content Include="Content\images\FoodAndDrink\Sushi\f3_4.png" />
+    <Content Include="Content\images\FoodAndDrink\Sushi\f3_5.png" />
+    <Content Include="Content\images\FoodAndDrink\Drinks\f5_1.png" />
+    <Content Include="Content\images\FoodAndDrink\Drinks\f5_2.png" />
+    <Content Include="Content\images\FoodAndDrink\Drinks\f5_3.png" />
+    <Content Include="Content\images\FoodAndDrink\Drinks\f5_4.png" />
+    <Content Include="Content\images\FoodAndDrink\Drinks\f5_5.png" />
+    <Content Include="Content\images\T_1.png" />
+    <Content Include="Content\images\T_10.png" />
+    <Content Include="Content\images\T_11.png" />
+    <Content Include="Content\images\T_12.png" />
+    <Content Include="Content\images\T_13.png" />
+    <Content Include="Content\images\T_14.png" />
+    <Content Include="Content\images\T_15.png" />
+    <Content Include="Content\images\T_16.png" />
+    <Content Include="Content\images\T_17.png" />
+    <Content Include="Content\images\T_18.png" />
+    <Content Include="Content\images\T_19.png" />
+    <Content Include="Content\images\T_2.png" />
+    <Content Include="Content\images\T_20.png" />
+    <Content Include="Content\images\T_3.png" />
+    <Content Include="Content\images\T_4.png" />
+    <Content Include="Content\images\T_5.png" />
+    <Content Include="Content\images\T_6.png" />
+    <Content Include="Content\images\T_7.png" />
+    <Content Include="Content\images\T_8.png" />
+    <Content Include="Content\images\T_9.png" />
+    <Content Include="Content\images\T_Origin.png" />
+    <Content Include="Models\NanRestaurantsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NanRestaurantsModel.edmx</DependentUpon>
+      <LastGenOutput>NanRestaurantsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NanRestaurantsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NanRestaurantsModel.edmx</DependentUpon>
+      <LastGenOutput>NanRestaurantsModel.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\clock\assets\css\bootstrap-theme.css.map" />
+    <Content Include="Content\clock\assets\css\bootstrap.css.map" />
+    <Content Include="Content\clock\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\clock\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\clock\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\images\FoodAndDrink\f1.psd" />
+    <EntityDeploy Include="Models\NanRestaurantsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NanRestaurantsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NanRestaurantsModel.edmx.diagram">
+      <DependentUpon>NanRestaurantsModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -201,7 +358,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Scripts\w3.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -235,6 +395,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\BookTable\Index.cshtml" />
+    <Content Include="Views\BookTable\OrderMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +413,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

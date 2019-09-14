@@ -1,0 +1,915 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NanRestaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegisterDate" Type="datetime" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\OAT\APPDATA\LOCAL\MICROSOFT\MICROSOFT SQL SERVER LOCAL DB\INSTANCES\BOOKTABLE\NANRESTAURANT.MDF.dbo.AccountDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AccountDetails">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="int" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="15" />
+          <Property Name="LoginDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Name="BookingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="DateIn" Type="date" />
+          <Property Name="TimeIn" Type="time" Precision="7" />
+          <Property Name="TimeOut" Type="time" Precision="7" />
+          <Property Name="CheckColor" Type="nvarchar" MaxLength="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\OAT\APPDATA\LOCAL\MICROSOFT\MICROSOFT SQL SERVER LOCAL DB\INSTANCES\BOOKTABLE\NANRESTAURANT.MDF.dbo.BookingDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BookingDetails">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Name="BookingID" Type="int" Nullable="false" />
+          <Property Name="TableID" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="SurName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Position" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="SurName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Cost" Type="money" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuImage" Type="nvarchar" MaxLength="300" />
+          <Property Name="Visible" Type="int" />
+          <Property Name="AcceptedStatus" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\OAT\APPDATA\LOCAL\MICROSOFT\MICROSOFT SQL SERVER LOCAL DB\INSTANCES\BOOKTABLE\NANRESTAURANT.MDF.dbo.MenuDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MenuDetails">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="Ingredients" Type="nvarchar" MaxLength="100" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qty" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\OAT\APPDATA\LOCAL\MICROSOFT\MICROSOFT SQL SERVER LOCAL DB\INSTANCES\BOOKTABLE\NANRESTAURANT.MDF.dbo.OrderDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="int" />
+          <Property Name="ProcessStatus" Type="nvarchar" MaxLength="20" />
+          <Property Name="Amount" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingID" Type="int" />
+          <Property Name="OrderDate" Type="date" />
+          <Property Name="OrderTime" Type="time" Precision="7" />
+          <Property Name="FoodStatus" Type="nvarchar" MaxLength="15" />
+          <Property Name="DrinkStatus" Type="nvarchar" MaxLength="15" />
+          <Property Name="TotalPrice" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="CardID" Type="nvarchar" MaxLength="20" />
+          <Property Name="CardName" Type="nvarchar" MaxLength="30" />
+          <Property Name="CCV" Type="nvarchar" MaxLength="5" />
+          <Property Name="ExpCard" Type="nvarchar" MaxLength="10" />
+          <Property Name="TypeCard" Type="nvarchar" MaxLength="20" />
+          <Property Name="PaymentTime" Type="time" Precision="7" />
+          <Property Name="PatmentDate" Type="date" />
+          <Property Name="TotalPrice" Type="money" />
+          <Property Name="PaymentStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Tables">
+          <Key>
+            <PropertyRef Name="TableID" />
+          </Key>
+          <Property Name="TableID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AccountDetails_ToAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="AccountDetails" Type="Self.AccountDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="AccountDetails">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_ToAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingDetails_ToBooking">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="1" />
+          <End Role="BookingDetails" Type="Self.BookingDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="BookingID" />
+            </Principal>
+            <Dependent Role="BookingDetails">
+              <PropertyRef Name="BookingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingDetails_ToTables">
+          <End Role="Tables" Type="Self.Tables" Multiplicity="0..1" />
+          <End Role="BookingDetails" Type="Self.BookingDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tables">
+              <PropertyRef Name="TableID" />
+            </Principal>
+            <Dependent Role="BookingDetails">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_ToAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_ToAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuDetails_ToMenu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="MenuDetails" Type="Self.MenuDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="MenuDetails">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ToBooking">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="BookingID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="BookingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_ToMenu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_ToOrder">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_ToAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_ToOrder">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NanRestaurantModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tables" EntityType="Self.Tables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountDetails" EntityType="Self.AccountDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AccountDetails].[AccountID] AS [AccountID], 
+    [AccountDetails].[IP] AS [IP], 
+    [AccountDetails].[LoginDate] AS [LoginDate]
+    FROM [dbo].[AccountDetails] AS [AccountDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BookingDetails" EntityType="Self.BookingDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BookingDetails].[BookingID] AS [BookingID], 
+    [BookingDetails].[TableID] AS [TableID]
+    FROM [dbo].[BookingDetails] AS [BookingDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MenuDetails" EntityType="Self.MenuDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MenuDetails].[MenuID] AS [MenuID], 
+    [MenuDetails].[Ingredients] AS [Ingredients], 
+    [MenuDetails].[Unit] AS [Unit], 
+    [MenuDetails].[Qty] AS [Qty]
+    FROM [dbo].[MenuDetails] AS [MenuDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OrderDetails].[OrderID] AS [OrderID], 
+    [OrderDetails].[MenuID] AS [MenuID], 
+    [OrderDetails].[ProcessStatus] AS [ProcessStatus], 
+    [OrderDetails].[Amount] AS [Amount]
+    FROM [dbo].[OrderDetails] AS [OrderDetails]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AccountDetails_ToAccount" Association="Self.FK_AccountDetails_ToAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="AccountDetails" EntitySet="AccountDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_ToAccount" Association="Self.FK_Booking_ToAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingDetails_ToBooking" Association="Self.FK_BookingDetails_ToBooking">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingDetails_ToTables" Association="Self.FK_BookingDetails_ToTables">
+            <End Role="Tables" EntitySet="Tables" />
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_ToAccount" Association="Self.FK_Employee_ToAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_ToAccount" Association="Self.FK_Member_ToAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuDetails_ToMenu" Association="Self.FK_MenuDetails_ToMenu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="MenuDetails" EntitySet="MenuDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ToBooking" Association="Self.FK_Order_ToBooking">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_ToMenu" Association="Self.FK_OrderDetails_ToMenu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_ToOrder" Association="Self.FK_OrderDetails_ToOrder">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_ToAccount" Association="Self.FK_Payment_ToAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_ToOrder" Association="Self.FK_Payment_ToOrder">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NanRestaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterDate" Type="DateTime" Precision="3" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AccountDetails" Relationship="Self.FK_AccountDetails_ToAccount" FromRole="Account" ToRole="AccountDetails" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_ToAccount" FromRole="Account" ToRole="Booking" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_ToAccount" FromRole="Account" ToRole="Employee" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Member_ToAccount" FromRole="Account" ToRole="Member" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_Payment_ToAccount" FromRole="Account" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Name="BookingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="DateIn" Type="DateTime" Precision="0" />
+          <Property Name="TimeIn" Type="Time" Precision="7" />
+          <Property Name="TimeOut" Type="Time" Precision="7" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Booking_ToAccount" FromRole="Booking" ToRole="Account" />
+          <NavigationProperty Name="BookingDetails" Relationship="Self.FK_BookingDetails_ToBooking" FromRole="Booking" ToRole="BookingDetails" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_ToBooking" FromRole="Booking" ToRole="Orders" />
+          <Property Name="CheckColor" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SurName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="PhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Employee_ToAccount" FromRole="Employee" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SurName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="PhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Member_ToAccount" FromRole="Member" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuImage" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Visible" Type="Int32" />
+          <Property Name="AcceptedStatus" Type="Int32" />
+          <NavigationProperty Name="MenuDetails" Relationship="Self.FK_MenuDetails_ToMenu" FromRole="Menu" ToRole="MenuDetails" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_ToMenu" FromRole="Menu" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingID" Type="Int32" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <Property Name="OrderTime" Type="Time" Precision="7" />
+          <Property Name="FoodStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DrinkStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TotalPrice" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK_Order_ToBooking" FromRole="Orders" ToRole="Booking" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_ToOrder" FromRole="Orders" ToRole="OrderDetails" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_Payment_ToOrder" FromRole="Orders" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="CardID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CardName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CCV" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ExpCard" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TypeCard" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentTime" Type="Time" Precision="7" />
+          <Property Name="PatmentDate" Type="DateTime" Precision="0" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PaymentStatus" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Payment_ToAccount" FromRole="Payment" ToRole="Account" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Payment_ToOrder" FromRole="Payment" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Tables">
+          <Key>
+            <PropertyRef Name="TableID" />
+          </Key>
+          <Property Name="TableID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BookingDetails" Relationship="Self.FK_BookingDetails_ToTables" FromRole="Tables" ToRole="BookingDetails" />
+        </EntityType>
+        <EntityType Name="AccountDetails">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int32" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="LoginDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_AccountDetails_ToAccount" FromRole="AccountDetails" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="BookingDetails">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Name="BookingID" Type="Int32" Nullable="false" />
+          <Property Name="TableID" Type="Int32" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK_BookingDetails_ToBooking" FromRole="BookingDetails" ToRole="Booking" />
+          <NavigationProperty Name="Tables" Relationship="Self.FK_BookingDetails_ToTables" FromRole="BookingDetails" ToRole="Tables" />
+        </EntityType>
+        <EntityType Name="MenuDetails">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="Ingredients" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Double" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK_MenuDetails_ToMenu" FromRole="MenuDetails" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="MenuID" Type="Int32" />
+          <Property Name="ProcessStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Int32" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK_OrderDetails_ToMenu" FromRole="OrderDetails" ToRole="Menu" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_OrderDetails_ToOrder" FromRole="OrderDetails" ToRole="Orders" />
+        </EntityType>
+        <Association Name="FK_AccountDetails_ToAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="AccountDetails" Type="Self.AccountDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="AccountDetails">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_ToAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_ToAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_ToAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_ToAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingDetails_ToBooking">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="1" />
+          <End Role="BookingDetails" Type="Self.BookingDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="BookingID" />
+            </Principal>
+            <Dependent Role="BookingDetails">
+              <PropertyRef Name="BookingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ToBooking">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="BookingID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="BookingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuDetails_ToMenu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="MenuDetails" Type="Self.MenuDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="MenuDetails">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_ToMenu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_ToOrder">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_ToOrder">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingDetails_ToTables">
+          <End Role="Tables" Type="Self.Tables" Multiplicity="0..1" />
+          <End Role="BookingDetails" Type="Self.BookingDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tables">
+              <PropertyRef Name="TableID" />
+            </Principal>
+            <Dependent Role="BookingDetails">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NanRestaurantEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="Booking" EntityType="Self.Booking" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Member" EntityType="Self.Member" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" />
+          <EntitySet Name="Tables" EntityType="Self.Tables" />
+          <EntitySet Name="AccountDetails" EntityType="Self.AccountDetails" />
+          <EntitySet Name="BookingDetails" EntityType="Self.BookingDetails" />
+          <EntitySet Name="MenuDetails" EntityType="Self.MenuDetails" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
+          <AssociationSet Name="FK_AccountDetails_ToAccount" Association="Self.FK_AccountDetails_ToAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="AccountDetails" EntitySet="AccountDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_ToAccount" Association="Self.FK_Booking_ToAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_ToAccount" Association="Self.FK_Employee_ToAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_ToAccount" Association="Self.FK_Member_ToAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_ToAccount" Association="Self.FK_Payment_ToAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingDetails_ToBooking" Association="Self.FK_BookingDetails_ToBooking">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ToBooking" Association="Self.FK_Order_ToBooking">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuDetails_ToMenu" Association="Self.FK_MenuDetails_ToMenu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="MenuDetails" EntitySet="MenuDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_ToMenu" Association="Self.FK_OrderDetails_ToMenu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_ToOrder" Association="Self.FK_OrderDetails_ToOrder">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_ToOrder" Association="Self.FK_Payment_ToOrder">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingDetails_ToTables" Association="Self.FK_BookingDetails_ToTables">
+            <End Role="Tables" EntitySet="Tables" />
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NanRestaurantModelStoreContainer" CdmEntityContainer="NanRestaurantEntities">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="NanRestaurantModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Booking">
+            <EntityTypeMapping TypeName="NanRestaurantModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="CheckColor" ColumnName="CheckColor" />
+                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="NanRestaurantModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Member">
+            <EntityTypeMapping TypeName="NanRestaurantModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="NanRestaurantModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="MenuImage" ColumnName="MenuImage" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="AcceptedStatus" ColumnName="AcceptedStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="NanRestaurantModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="FoodStatus" ColumnName="FoodStatus" />
+                <ScalarProperty Name="DrinkStatus" ColumnName="DrinkStatus" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment">
+            <EntityTypeMapping TypeName="NanRestaurantModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="CCV" ColumnName="CCV" />
+                <ScalarProperty Name="ExpCard" ColumnName="ExpCard" />
+                <ScalarProperty Name="TypeCard" ColumnName="TypeCard" />
+                <ScalarProperty Name="PaymentTime" ColumnName="PaymentTime" />
+                <ScalarProperty Name="PatmentDate" ColumnName="PatmentDate" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="NanRestaurantModel.Tables">
+              <MappingFragment StoreEntitySet="Tables">
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountDetails">
+            <EntityTypeMapping TypeName="NanRestaurantModel.AccountDetails">
+              <MappingFragment StoreEntitySet="AccountDetails">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookingDetails">
+            <EntityTypeMapping TypeName="NanRestaurantModel.BookingDetails">
+              <MappingFragment StoreEntitySet="BookingDetails">
+                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuDetails">
+            <EntityTypeMapping TypeName="NanRestaurantModel.MenuDetails">
+              <MappingFragment StoreEntitySet="MenuDetails">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="Ingredients" ColumnName="Ingredients" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="NanRestaurantModel.OrderDetails">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="ProcessStatus" ColumnName="ProcessStatus" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
