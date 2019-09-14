@@ -20,9 +20,28 @@ namespace ReserveTable.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Promotion1()
         {
-            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult Promotion2()
+        {
+
+            return View();
+        }
+        public ActionResult Promotion3()
+        {
+
+            return View();
+        }
+        public ActionResult Promotion4()
+        {
+
+            return View();
+        }
+        public ActionResult Promotion5()
+        {
 
             return View();
         }
