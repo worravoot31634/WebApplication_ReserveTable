@@ -45,5 +45,11 @@ namespace ReserveTable.Controllers
 
             return View();
         }
+
+        public ActionResult Menu()
+        {
+            return View();
+        }
+
     }
 }

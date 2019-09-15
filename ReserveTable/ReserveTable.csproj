@@ -285,8 +285,12 @@
     <Content Include="Content\Home\image\font_menu.png" />
     <Content Include="Content\Home\image\font_pro.png" />
     <Content Include="Content\Home\image\Food_intro.png" />
+    <Content Include="Content\Home\image\F_Maps.png" />
     <Content Include="Content\Home\image\home.png" />
+    <Content Include="Content\Home\image\logoMaps.png" />
     <Content Include="Content\Home\image\Pro.png" />
+    <Content Include="Content\Home\image\sagura.png" />
+    <Content Include="Content\Home\image\sagura2.png" />
     <Content Include="Content\images\FoodAndDrink\Snacks\f2_1.png" />
     <Content Include="Content\images\FoodAndDrink\Snacks\f2_2.png" />
     <Content Include="Content\images\FoodAndDrink\Snacks\f2_3.png" />

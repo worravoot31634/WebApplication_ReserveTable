@@ -1,0 +1,382 @@
+﻿
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Set height of body and the document to 100% */
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        /* Style tab links */
+        .tablink {
+            background-color:white;
+            color: black;
+            float: left;
+            border: 5;
+            border-color: #EC808D;
+            border-radius : 50px;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 30px;
+            width: 20%;
+            font-size:1vw;
+        }
+
+
+
+            .tablink:hover {
+                background-color:  #EC808D;
+            }
+
+        /* Style the tab content (and add height:100% for full page content) */
+        .tabcontent {
+            color:  white;
+            display: none;
+            padding: 100px 20px;
+            height: 100%;
+        }
+
+        #MainCourses {
+            background-color: white;
+        }
+
+        #Appetizer {
+            background-color: white;
+        }
+
+        #Sushi {
+            background-color: white;
+        }
+
+        #Dessert {
+            background-color:white;
+        }
+
+        #Beverage {
+            background-color:white;
+        }
+        
+        label,
+ 
+
+        input[type='image'] {
+            width: 100%;
+
+
+        }
+        .div{
+            background-color: black;
+            border:5;
+            border-radius : 50px;
+            width: 50%;
+            font-size:1vw;
+         
+
+        }
+       
+
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <img width="100%" src="~/Content/images/headMenu.png" />
+<div >
+    <table width="70%" align="center">
+
+        <tr>
+            <td>
+                <button class="tablink" onclick="openPage('MainCourses', this, '#EC808D')">อาหารจานเดียว</button>
+                <button class="tablink" onclick="openPage('Appetizer', this, '#EC808D')" id="defaultOpen">ของว่าง</button>
+                <button class="tablink" onclick="openPage('Sushi', this, '#EC808D')">ซูชิ</button>
+                <button class="tablink" onclick="openPage('Dessert', this, '#EC808D')">ของหวาน</button>
+                <button class="tablink" onclick="openPage('Beverage', this, '#EC808D')">เครื่องดื่ม</button>
+
+
+                <div id="MainCourses" class="tabcontent">
+
+                    <div class="w3-cell-row">
+
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/จานเดียว/f1_1.png" />
+                                <center>
+                                    <font color="#EC808D" size="6" style="font-size:1vw">ข้าวหน้าหมู</font>
+                                    <div class="div">
+                                    <p>275 .-<p>
+                                    </div>
+                                </center>
+                                </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/จานเดียว/f1_2.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">ข้าวแกงกะหรี่หมูชีส</font>
+                                <div class="div">
+                                    <p>285 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/จานเดียว/f1_3.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">หมูผัดกิมจิ</font>
+                                <div class="div">
+                                    <p>275 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/จานเดียว/f1_4.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">ข้าวหน้าหมูซอสโชยุ</font>
+                                <div class="div">
+                                    <p>259 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/จานเดียว/f1_5.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">ข้าวหน้าปลาไหล</font>
+                                <div class="div">
+                                    <p>195 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="Appetizer" class="tabcontent">
+                    <div class="w3-cell-row">
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Snacks/f2_1.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">ทาโกยากิ</font>
+                                <div class="div">
+                                    <p>139 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Snacks/f2_2.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">ไก่เทอริยากิ</font>
+                                <div class="div">
+                                    <p>159 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Snacks/f2_3.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">สลัดแคนตาลูป</font>
+                                <div class="div">
+                                    <p>129 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Snacks/f2_4.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">ปูอัด(ซูริมิ)</font>
+                                <div class="div">
+                                    <p>129 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Snacks/f2_5.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">กุ้งเทมปุระ</font>
+                                <div class="div">
+                                    <p>259 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Sushi" class="tabcontent">
+                    <div class="w3-cell-row">
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Sushi/f3_1.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">ซูชิปลาแซลมอน</font>
+                                <div class="div">
+                                    <p>*90 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Sushi/f3_2.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">ซูชิมากุโระ</font>
+                                <div class="div">
+                                    <p>90 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Sushi/f3_3.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">แซลมอนซาชิมิ</font>
+                                <div class="div">
+                                    <p>299 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Sushi/f3_4.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">ซูชิมากิ</font>
+                                <div class="div">
+                                    <p>75 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Sushi/f3_5.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">ซูชิไข่ปลาแซลมอน</font>
+                                <div class="div">
+                                    <p>85 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Dessert" class="tabcontent">
+                    <div class="w3-cell-row">
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Dessert/f4_1.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">ไดฟูกุสตอเบอรี่ถั่วแดง</font>
+                                <div class="div">
+                                    <p>109 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Dessert/f4_2.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">โมจิหยดน้ำ</font>
+                                <div class="div">
+                                    <p>250 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Dessert/f4_3.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">โดรายากิ</font>
+                                <div class="div">
+                                    <p>239 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Dessert/f4_4.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">บิงซูมะม่วง</font>
+                                <div class="div">
+                                    <p>199 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Dessert/f4_5.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">บิงซูสตอเบอรี่</font>
+                                <div class="div">
+                                    <p>219 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div id="Beverage" class="tabcontent">
+                    <div class="w3-cell-row">
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Drinks/f5_1.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">ชาเขียวมัทฉะ</font>
+                                <div class="div">
+                                    <p>120 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Drinks/f5_2.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">เหล้าบ๊วย</font>
+                                <div class="div">
+                                    <p>320 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Drinks/f5_3.png" />
+                            <center>
+                                <font color="#EC808D" size="6 " style="font-size:1vw" >เหล้าจุนไมซู</font>
+                                <div class="div">
+                                    <p>599 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Drinks/f5_4.png" />
+                            <center>
+                                <font color="#EC808D" size="6" style="font-size:1vw">มัทฉะ</font>
+                                <div class="div">
+                                    <p>150 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <img width="100%" src="~/Content/images/FoodAndDrink/Drinks/f5_5.png" />
+                            <center>
+                                <font color="#EC808D" size="6"style="font-size:1vw">น้ำดื่มคริสตัล</font>
+                                <div class="div">
+                                    <p>20 .-<p>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+</div>
+<td>
+        <tr>
+    </table>
+
+
+    <script>
+        function openPage(pageName, elmnt, color) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(pageName).style.display = "block";
+            elmnt.style.backgroundColor = color;
+        }
+        
+
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+
