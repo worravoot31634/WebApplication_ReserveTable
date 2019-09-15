@@ -158,7 +158,8 @@
         <a style="transition:0.2s; font-size:20px;" class=""><img width="30" src="https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/69874113_659384937883420_8499391102237802496_n.png?_nc_cat=100&_nc_oc=AQnUtLTQ5Si4650BRA9P6I5IYDnLlTzTjA9Fqs5pCSZgGUqbTxa_6XLMtDiEvs7HYxc&_nc_ht=scontent.fbkk14-1.fna&oh=9d39d777ace29421899b627df08d4bed&oe=5DFEE16F" /></a>
         <a href="#" style="transition:0.2s; font-size:20px;" class="w3-padding-16">หน้าแรก</a>
         <a href="#" style="transition:0.2s; font-size:20px;" class="w3-padding-16 aaa">เมนูอาหาร</a>
-        <a href="#" style="transition:0.2s; font-size:20px;" class="w3-padding-16">จองโต๊ะ</a>
+        @Html.ActionLink("จองโต๊ะ", "Index", "BookTable", null, new { @class = "w3-padding-16", @style= "transition:0.2s; font-size:20px;" });
+       
         <a href="#" style="transition:0.2s; font-size:20px;" class="w3-padding-16">โปรโมชั่น</a>
         <a href="#" style="transition:0.2s; font-size:20px;" class="w3-padding-16">แผนที่</a>
         <div class="dropdown">

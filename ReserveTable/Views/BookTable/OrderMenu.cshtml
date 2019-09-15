@@ -153,10 +153,13 @@ input[type=number]::-webkit-outer-spin-button {
 
     <table width="60%" align="center">
         <tr>
-            <td style="font-size:17px; background-color:#333; color:white;" class="w3-center">
-                <b><p>เลือกโต๊ะ</p></b>
+            
+            
+                <td style="font-size:17px; background-color:#333; color:white;cursor:pointer" class="w3-center">
+                    <b>@Html.ActionLink("เลือกโต๊ะ" , "Index" , "BookTable" ,new { @style= "width: 100%; height: 100%;display: block;text-decoration: none;" })</b>
 
-            </td>
+                </td>
+            
 
             <td style="font-size:17px; background-color:#EC808D; color:white;" class="w3-center">
                 <p>เลือกอาหาร</p>
