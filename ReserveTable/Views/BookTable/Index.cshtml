@@ -277,7 +277,7 @@
 
                         <div class="w3-container w3-cell w3-right">
                             
-                            <input type="submit" value="ต่อไป" class="w3-button w3-round w3-blue" />
+                            <input type="submit" value="ต่อไป" class="w3-button w3-round w3-blue" id="Conbtn"/>
                         </div>
 
                     </div>
@@ -397,7 +397,7 @@
 
 </script>
 <script  type="text/javascript" >
-    
+
     $(document).ready(function () {
         $('#SearchTable').click(function (event) {
             event.preventDefault();
@@ -405,15 +405,48 @@
         })
 
 
-    });
-    </script>
+        $('#Conbtn').click(function (event) {
+
+            var TableNo=[];
+            $('input[name=tableNo]').each(function () {
+
+                if ($(this).is(":checked")) {
+
+                    TableNo.push("TableNo=" + $(this).val());
+                }
+
+
+            })
+
+            var i = 0;
+            //TableNo = TableNo.toString();
+            TableNo = TableNo.join("&");
+            TimeInNull = document.getElementById("TimeIn");
+            TimeOutNull = document.getElementById("TimeOut");
+            DateInNull = document.getElementById("DateIn");
+            
+            if (TableNo !== "") {
+                if ((DateInNull != null && TimeInNull != null && TimeOutNull != null)) {
+                    event.preventDefault();
+                    window.location.href = "@Url.Action("OrderMenu" , "BookTable")" + "?DateIn=" + $('#DateIn').val() + "&TimeIn=" + $('#TimeIn').val() + "&TimeOut=" + $('#TimeOut').val() + TableNo;
+                }
+                
+            } else {
+                alert("Null");
+            }
+            
+            
+
+        });
+    })
+
+
+
+ </script>
 <script type="text/javascript" >
     $("#searchTable").click(function () {
 
-        var data = {
     
-            TID: $("TableID").val();
-        }
 
         $.ajax({
 
