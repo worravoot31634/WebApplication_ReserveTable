@@ -1,0 +1,272 @@
+﻿
+@{
+    ViewBag.Title = "ReserveHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .hero-image {
+        background-image: url(/Content/Home/image/Food_intro.png);
+        background-color: #cccccc;
+        height: 800px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
+    .hero-image2 {
+        background-image: url(/Content/Home/image/sagura2.png);
+        background-color: #cccccc;
+        height: 700px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
+
+    .hero-image3 {
+        background-image: url(/Content/Home/image/F_Maps.png);
+        background-color: #cccccc;
+        height: 800px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
+    .card {
+        background-color: #938c8d20;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .fakeimg {
+        background-color: #aaa;
+        width: 100%;
+        padding: 100px;
+    }
+</style>
+
+<table align="center">
+    <tr>
+        <td><img width="100%" src="~/Content/Home/image/Reservation_His.png" /></td>
+
+    </tr>
+</table>
+
+<div class="w3-container">
+
+    <table width="60%" align="center" class="w3-table w3-centered w3-large">
+        <tr>
+
+            <th style="font-size:17px; background-color:#EC808D; color:white;" class="w3-center">
+                <b><p>รหัสการจอง</p></b>
+            <th style="font-size:17px; background-color:#EC808D; color:white;" class="w3-center">
+                <b><p>หมายเลขโต๊ะ</p></b>
+            <th style="font-size:17px; background-color:#EC808D; color:white;" class="w3-center">
+                <b><p>วันที่จอง</p></b>
+            <th style="font-size:17px; background-color:#EC808D; color:white;" class="w3-center">
+                <b><p>เวลาเข้า</p></b>
+            <th style="font-size:17px; background-color:#EC808D; color:white;" class="w3-center">
+                <b><p>เวลาออก</p></b>
+            <th style="font-size:17px; background-color:#1E90FF; color:white;" class="w3-center">
+                <b><p>รายละเอียด</p></b>
+            <th style="font-size:17px; background-color:#ff0000; color:white;" class="w3-center">
+                <b><p>ยกเลิกการจอง</p></b>
+
+            </th>
+        </tr>
+
+        <tr>
+
+            <td>B10</td>
+            <td>T6</td>
+            <td>31/08/2562</td>
+
+            <td>08.00</td>
+            <td>09.00</td>
+            <td>
+                <button onclick="document.getElementById('detail').style.display='block'" class="w3-button" style="background-color:#1E90FF;color:#ffffff;">รายละเอียด</button>
+            <td>
+                <button onclick="document.getElementById('cancel').style.display='block'" class="w3-button" style="background-color:#ff0000;color:#ffffff;">ยกเลิก</button>
+            </td>
+
+
+
+    </table>
+</div>
+
+
+    <div id="detail" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom w3-card-4">
+                <header class="w3-container" style="background-color:#EC808D;color:#ffffff; ">
+                    <span onclick="document.getElementById('detail').style.display = 'none'"
+                          class="w3-button w3-display-topright"><font size="4px">X</font></span>
+                    <center>
+                        <font size="6px">รายละเอียดการจอง</font>
+                    </center>
+                </header>
+                <div class="w3-container">
+                    <br>
+                    <table width="60%" align="center" class="w3-table w3-centered w3-large">
+                        <tr>
+                            <td style="width:60%;">
+                        <table style="background-color:#EC808D;  width:100%; color:white;" >
+                                <tr><td><b><p>เมนูการจอง</p></b></td></tr>
+                        </table>
+                         
+                        <table style="font-size:17px; width:100%; background-color:#E8E8E8; color:black;" class="w3-center">
+                         
+                            <tr>
+                                <td style=" width:25%">
+                                    <img src="~/Content/Home/image/f1_1.png" style=" width:60%">
+                                </td>
+                                <td style=" width:25%">
+                                    <p>ข้าวหน้าหมู</p>
+                                </td>
+
+                                <td style=" width:25%">
+                                    <p>1</p>
+                                </td>
+                                <td style=" width:25%">
+                                    <p>180 .-</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style=" width:25%">
+                                    <img src="~/Content/Home/image/f1_2.png" style=" width:60%">
+                                </td>
+                                <td style=" width:25%">
+                                    <p>ข้าวแกงกะหรี่หมู</p>
+                                </td>
+
+                                <td style=" width:25%">
+                                    <p>2</p>
+                                </td>
+                                <td style=" width:25%">
+                                    <p>220 .-</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style=" width:25%">
+                                    <img src="~/Content/Home/image/f1_3.png" style=" width:60%">
+                                </td>
+                                <td style=" width:25%">
+                                    <p>ข้าวหน้าหมูกิมจิ</p>
+                                </td>
+
+                                <td style=" width:25%">
+                                    <p>1</p>
+                                </td>
+                                <td style=" width:25%">
+                                    <p>170 .-</p>
+                                </td>
+                            </tr>
+                        </table>
+                        </td>
+
+                        <td>
+                            <table style="width:100%;">
+                                <tr>
+                                    <td style="width:50%; text-align: left;">
+                                        รหัสการจอง:
+                                    </td>
+                                    <td style="width:50%; text-align: left;">
+                                        B10
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:50%; text-align: left;">
+                                        ชื่อ:
+                                    </td>
+                                    <td style="width:50%; text-align: left;">
+                                        B10
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:50%; text-align: left;">
+                                        วันที่ทำการจอง:
+                                    </td>
+                                    <td style="width:50%; text-align: left;">
+                                        B10
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:50%; text-align: left;">
+                                        ค่าอาหาร:
+                                    </td>
+                                    <td style="width:50%; text-align: left;">
+                                        B10
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:50%; text-align: left;">
+                                        ค่ามัดจำ:
+                                    </td>
+                                    <td style="width:50%; text-align: left;">
+                                        B10
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:50%; text-align: left;">
+                                        ราคารวม:
+                                    </td>
+                                    <td style="width:50%; text-align: left;">
+                                        B10
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                        </tr>
+                    </table>
+                    <br>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+    <div id="cancel" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom w3-card-4">
+            <header class="w3-container" style="background-color:#EC808D;color:#ffffff; ">
+                <span onclick="document.getElementById('cancel').style.display = 'none'"
+                      class="w3-button w3-display-topright"><h5>&times;</h5></span>
+                <center>
+                    <font size="6px"><p>ยกเลิกการจอง</p></font>
+                </center>
+            </header>
+            <div class="w3-container">
+                <table width="60%" align="center" class="w3-table w3-centered w3-large">
+                    <tr>
+                        <td>
+
+                            <b><p><img src="~/Content/Home/image/triangle.png" style="width:50px">      หากท่านต้องการยกเลิกการจองทางร้านขออนุญาติหักเงินค่ามัดจำ </p></b>
+                    <tr>
+                        <td>
+                            <button class="w3-button  w3-black w3-border"
+                                    onclick="document.getElementById('cancel').style.display='none'">
+                                กลับ
+                            </button>
+
+                            <button onclick="document.getElementById('cancel').style.display='block'" class="w3-button" style="background-color:#ff0000;color:white;">ยกเลิก</button>
+
+
+
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+    <!--
+    To use this code on your website, get a free API key from Google.
+    Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+    -->

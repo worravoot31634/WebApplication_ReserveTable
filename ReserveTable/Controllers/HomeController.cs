@@ -50,6 +50,10 @@ namespace ReserveTable.Controllers
         {
             return View();
         }
+        public ActionResult ReserveHistory()
+        {
+            return View();
+        }
 
     }
 }
