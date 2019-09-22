@@ -287,6 +287,7 @@
     <Content Include="Content\Home\image\Food_intro.png" />
     <Content Include="Content\Home\image\F_Maps.png" />
     <Content Include="Content\Home\image\home.png" />
+    <Content Include="Content\Home\image\icon.jpg" />
     <Content Include="Content\Home\image\logoMaps.png" />
     <Content Include="Content\Home\image\Pro.png" />
     <Content Include="Content\Home\image\sagura.png" />

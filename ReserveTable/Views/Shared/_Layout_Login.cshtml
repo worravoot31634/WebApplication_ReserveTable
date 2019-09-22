@@ -91,6 +91,8 @@
             color: red;
         }
 
+        
+
         @@media screen and (max-width: 700px) {
             .topnav a:not(:first-child), .dropdown .dropbtn {
                 display: none;
@@ -119,7 +121,7 @@
                     text-align: left;
                 }
 
-                .topnav.responsive .dropdown {
+                .topnav.responsive .dropdown .re-right {
                     float: none;
                 }
 
@@ -161,8 +163,8 @@
         <a href="#" style="transition:0.2s; font-size:20px;" class="w3-padding-16">จองโต๊ะ</a>
         <a href="#" style="transition:0.2s; font-size:20px;" class="w3-padding-16">โปรโมชั่น</a>
         <a href="#" style="transition:0.2s; font-size:20px;" class="w3-padding-16">แผนที่</a>
-        <a href="#" style="transition:0.2s; font-size:20px;  background-color: #EC808D;ว" class="w3-padding-16 w3-right ">สมัครสมาชิก</a>
-        <a href="#" style="transition:0.2s; font-size:20px;" class="w3-padding-16 w3-right " onclick="document.getElementById('id01').style.display='block'">เข้าสู่ระบบ</a>
+        <a href="#" style="transition:0.2s; font-size:20px;  background-color: #EC808D;" class="w3-padding-16 w3-right" onclick="document.getElementById('id02').style.display='block'">สมัครสมาชิก</a>
+        <a href="#" style="transition:0.2s; font-size:20px;" class="w3-padding-16 w3-right" onclick="document.getElementById('id01').style.display='block'">เข้าสู่ระบบ</a>
         <a href="javascript:void(0);" style="font-size:15px;" class="icon" onClick="myFunction()">&#9776;</a>
     </div>
 
@@ -202,30 +204,118 @@
             <div class="w3-center">
                 <br>
                 <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-pink w3-display-topright" title="Close Modal">&times;</span>
-                
+
             </div>
 
             <form class="w3-container" action="/action_page.php">
                 <div class="w3-container w3-cell w3-mobile">
-                    <label><b>ชื่อผู้ใช้</b></label>
-                    <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="usrname" required>
-                    <label><b>รหัสผ่าน</b></label>
-                    <input class="w3-input w3-border" type="password" placeholder="ใส่รหัสผ่าน" name="psw" required>
+                    <center> <img src="~/Content/Home/image/icon.jpg" width="20%" /> </center>
 
+                    <div class="w3-container ">
+                        <label><b>ชื่อผู้ใช้</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="ใส่ชื่อผู้ใช้" name="usrname" required>
+                    </div>
+
+                    <div class="w3-container ">
+                        <label><b>รหัสผ่าน</b></label>
+                        <input class="w3-input w3-border" type="password" placeholder="ใส่รหัสผ่าน" name="psw" required>
+                    </div>
+
+                    <div class="w3-container ">
+                        <button class="w3-button w3-block w3-black w3-section w3-padding" type="submit">เข้าสู่ระบบ</button>
+                    </div>
+                   
+                    
                 </div>
-
-                <button class="w3-button w3-block w3-black w3-section w3-padding" type="submit">เข้าสู่ระบบ</button>
-                <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> จดจำฉัน
-
             </form>
+
 
             <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
                 <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">ยกเลิก</button>
                 <span class="w3-right w3-padding w3-hide-small">ลืม <a href="#">รหัสผ่าน?</a></span>
             </div>
+        </div>
+    </div>
 
-            @Scripts.Render("~/bundles/jquery")
-            @Scripts.Render("~/bundles/bootstrap")
-            @RenderSection("scripts", required: false)
+
+
+
+    <div id="id02" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+            <div class="w3-center">
+                <br>
+                <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-xlarge w3-hover-pink w3-display-topright" title="Close Modal">&times;</span>
+
+            </div>
+
+            <form class="w3-container" action="/action_page.php">
+                <div class="w3-container w3-cell w3-mobile">
+                    <center><label><b style="font-size:30px;"> สมัครสมาชิก</b></label></center>
+                    <br />
+
+                    <div class="w3-container  w3-cell">
+                        <label><b>ชื่อ</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="กรอกชื่อ" name="name" required>
+                    </div>
+
+                    <div class="w3-container  w3-cell">
+                        <label><b>นามสกุล</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="กรอกนามสกุล" name="surname" required>
+                    </div>
+
+                    <div class="w3-container ">
+                        <label><b>ชื่อผู้ใช้</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="กรอกชื่อผู้ใช้" name="username" required>
+                    </div>
+
+                    <div class="w3-container w3-cell">
+                        <label><b>รหัสผ่าน</b></label>
+                        <input class="w3-input w3-border" type="password" placeholder="ใส่รหัสผ่าน" name="psw" required>
+                    </div>
+
+                    <div class="w3-container w3-cell">
+                        <label><b>ยืนยันรหัสผ่าน</b></label>
+                        <input class="w3-input w3-border" type="password" placeholder="กรอกรหัสผ่านอีกครั้ง" name="submit" required>
+                    </div>
+                    <br />
+                    <div class="w3-container w3-cell">
+                        <label><b>อีเมล</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="กรอกอีเมล" name="email" required>
+                    </div>
+
+                    <div class="w3-container w3-cell ">
+                        <label><b>เบอร์โทรศัพท์</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="กรอกเบอร์โทรศัพท์" name="phone_number" required>
+                    </div>
+
+                    <div class="w3-container ">
+                        <label><b>ภาพโปรไฟล์</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom " type="file" name="myfile" style="" required>
+                    </div>
+
+                    <div class="w3-container ">
+                        <label><b>ที่อยูู่</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="กรอกที่อยู่" name="address" required>
+                    </div>
+
+
+
+                    <button class="w3-button w3-block w3-black w3-section w3-padding" type="submit">สมัครสมาชิก</button>
+                </div>
+
+            </form>
+
+
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                <button onclick="document.getElementById('id02').style.display='none'" type="button" class="w3-button w3-red">ยกเลิก</button>
+
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
