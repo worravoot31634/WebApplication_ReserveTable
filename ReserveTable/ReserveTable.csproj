@@ -451,6 +451,14 @@
     <Content Include="Views\Shared\Barista.cshtml" />
     <Content Include="Views\Cashier\Index.cshtml" />
     <Content Include="Views\Shared\Cashier.cshtml" />
+    <Content Include="Views\Manager\ApproveMenu.cshtml" />
+    <Content Include="Views\Manager\MenuReport.cshtml" />
+    <Content Include="Views\Manager\IngredentReport.cshtml" />
+    <Content Include="Views\Manager\OrderReport.cshtml" />
+    <Content Include="Views\Manager\SalesReport.cshtml" />
+    <Content Include="Views\Manager\TimeReport.cshtml" />
+    <Content Include="Views\Manager\RegiterReport.cshtml" />
+    <Content Include="Views\Manager\UsingWebReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
