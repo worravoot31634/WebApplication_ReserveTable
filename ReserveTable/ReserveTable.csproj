@@ -173,62 +173,12 @@
     <Compile Include="Controllers\CashierController.cs" />
     <Compile Include="Controllers\ChefController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
-    <Compile Include="Models\Account.cs">
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Models\AccountDetails.cs">
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Booking.cs">
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BookingDetails.cs">
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\BookTableController.cs" />
     <Compile Include="Models\BookingModels.cs" />
-    <Compile Include="Models\Employee.cs">
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Models\Member.cs">
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Menu.cs">
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MenuDetails.cs">
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NanRestaurantsModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NanRestaurantsModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NanRestaurantsModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NanRestaurantsModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NanRestaurantsModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OrderDetails.cs">
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Orders.cs">
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Payment.cs">
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Tables.cs">
-      <DependentUpon>NanRestaurantsModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Menu.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -352,16 +302,6 @@
     <Content Include="Content\images\T_8.png" />
     <Content Include="Content\images\T_9.png" />
     <Content Include="Content\images\T_Origin.png" />
-    <Content Include="Models\NanRestaurantsModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NanRestaurantsModel.edmx</DependentUpon>
-      <LastGenOutput>NanRestaurantsModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\NanRestaurantsModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NanRestaurantsModel.edmx</DependentUpon>
-      <LastGenOutput>NanRestaurantsModel.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -375,13 +315,6 @@
     <Content Include="Content\clock\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\clock\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\images\FoodAndDrink\f1.psd" />
-    <EntityDeploy Include="Models\NanRestaurantsModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NanRestaurantsModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\NanRestaurantsModel.edmx.diagram">
-      <DependentUpon>NanRestaurantsModel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
