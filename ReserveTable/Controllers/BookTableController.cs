@@ -12,7 +12,9 @@ namespace ReserveTable.Controllers
     {
         BookingModels context = new BookingModels();
         BookingDetailsModels conBookingDetail = new BookingDetailsModels();
-        BookingDetails model = new BookingDetails();
+        NanRestaurantEntities1 db = new NanRestaurantEntities1();
+        Menu menu = new Menu();
+
         // GET: BookTable
         public ActionResult Index()
         {
@@ -34,79 +36,181 @@ namespace ReserveTable.Controllers
             return Json(DataBooking, JsonRequestBehavior.AllowGet);
         }*/
 
-            [HttpGet]
+         public ActionResult GetStatus()
+        {
+
+            return View();
+        }
+        [HttpGet]
         public ActionResult GetStatus(DateTime DateIn, TimeSpan TimeIn, TimeSpan TimeOut)
         {
-             int numTimeIn, numTimeOut;
-            var DateConvert = DateIn.Date;
-            var DataBookingDate = context.Bookings.ToList().Where(ParmDate => ParmDate.DateIn == DateConvert);
-            BookingDetails bkd = new BookingDetails();
 
-            List<BookingDetails> TableStatus;
+            var model = db.Bookings.ToList();
 
-            if (DataBookingDate != null)
+            
+            string timein = TimeIn.ToString("HH");
+
+            foreach (var item in model)
             {
 
-               
+                // sumIn = in.split(":");
+                /* sumOut = out.split(":"); // Time out by user and convert to string
+                 sumIn = in.split(":"); // Time in by user and convert to string
+                 numIn = arInDb[i].split(":"); // convert time In from db to string
+                 numOut = arOutDb[i].split(":"); // convert time out from db to string
 
-               
-          
-                foreach (var item in DataBookingDate)
-                {
+                 int hourInputOut = Integer.parseInt(sumOut[0]); // convert time Out by user from string to int hour
 
+                 int minInputOut = Integer.parseInt(sumOut[1]); // convert time Out by user from string to int minuses
 
-                   numTimeIn = TimeSpan.Compare(TimeIn, item.TimeOut.Value);
-                   numTimeOut = TimeSpan.Compare(TimeOut,item.TimeIn.Value);
-                    
-                    if (0 == 0)
-                    {
-                        var DataBookingDetail = conBookingDetail.BookingDetail.ToList().Where(detail => detail.BookingID == item.BookingID);
+                 int hourInputIn = Integer.parseInt(sumIn[0]); // convert time In by user from string to int hour
 
-                        TableStatus = new List<BookingDetails>()
-                        {
-                            new BookingDetails {BookingID= item.BookingID}
-                        };
-                        return Content(""+TableStatus) ;
-                    }
-                    else if (numTimeIn + numTimeOut == 1 || numTimeIn + numTimeOut == -1)
-                    {
-                      
-                        var DataBookingDetail = conBookingDetail.BookingDetail.ToList().Where(detail => detail.BookingID == item.BookingID);
-                        TableStatus = new List<BookingDetails>()
-                        {
-                            new BookingDetails {BookingID= item.BookingID}
-                        };
-                        return Json(TableStatus, JsonRequestBehavior.AllowGet);
-                    }
-                    else if (numTimeIn + numTimeOut == 2 || numTimeIn + numTimeOut == -2)
-                    {
-                       TableStatus = new List<BookingDetails>()
-                        {
-                            new BookingDetails {BookingID= item.BookingID}
-                        };
-                        TableStatus = new List<BookingDetails>()
-                        {
-                            new BookingDetails {BookingID= item.BookingID}
-                        };
-                        return Json(TableStatus, JsonRequestBehavior.AllowGet);
-                    }
+                 int minInputIn = Integer.parseInt(sumIn[1]); // convert time In by user from string to int minuses
 
-                    
+                 int hourInDb = Integer.parseInt(numIn[0]); // convert time form db from string to int hour In
+                 int minInDb = Integer.parseInt(numIn[1]); // convert time by form db from string to int minuses In
 
-                }
+                 int hourOutDb = Integer.parseInt(numOut[0]); // convert time form db from string to int hour Out
+                 int minOutDb = Integer.parseInt(numOut[1]); // convert time by form db from string to int minuses Out
 
-                
+                 System.out.println(" Hour Input Out = " + hourInputOut + " Hour In Db = " + hourInDb);
+                 System.out.println(" Min Input Out = " + minInputOut + " Min In Db = " + minInDb);
+
+                 System.out.println(" Hour In Input = " + hourInputIn + " Hour Out Db = " + hourOutDb);
+                 System.out.println(" Min In Input = " + minInputIn + " Min Out Db = " + minOutDb);
+
+                 if (hourInputOut < hourInDb)
+                 { // compare hour
+
+                     System.out.println("Can");
+
+                 }
+                 else if (hourInputOut >= hourInDb)
+                 {
+
+                     if (hourInputOut != hourInDb)
+                     {
+
+                         if (hourInputOut > hourInDb)
+                         {
+
+                             if (hourInputIn >= hourOutDb)
+                             {
+                                 if (hourInputIn == hourOutDb)
+                                 {
+                                     if (minInputIn > minOutDb)
+                                     {
+                                         System.out.println("Can 99");
+                                     }
+                                     else
+                                     {
+                                         System.out.println("Can not");
+                                     }
+                                 }
+                                 else
+                                 {
+                                     if (hourInputIn > hourInDb)
+                                     {
+                                         System.out.println("Can 888");
+                                     }
+                                     else
+                                     {
+                                         System.out.println("Can not");
+                                     }
+                                 }
+                             }
+                             else
+                             {
+                                 System.out.println("Can not 66-");
+                             }
+                         }
+                         else
+                         {
+                             if (minInputOut < minInDb)
+                             { // compare minuses
+                                 if (hourInputOut == hourInDb)
+                                 {
+                                     System.out.println("Can 222");
+                                 }
+                                 else
+                                 {
+                                     if (hourInputIn < hourOutDb)
+                                     { // check font
+
+                                         System.out.println("Can not");
+
+                                     }
+                                     else if (hourInputIn >= hourOutDb)
+                                     {
+
+                                         if (minInputIn > minOutDb)
+                                         {
+                                             System.out.println("Can");
+                                         }
+                                         else if (minInputIn <= minOutDb)
+                                         {
+                                             System.out.println("Can not 11");
+                                         }
+                                     } // end of check font
+                                 }
+
+                             }
+                             else if (minInputOut >= minInDb)
+                             {
+
+                                 if (minInputOut == minInDb)
+                                 {
+                                     System.out.println("Can 333");
+                                 }
+                                 else if (minInputOut > minInDb)
+                                 {
+                                     System.out.println("Can not 44");
+                                 }
+                             }
+                             else
+                             {
+                                 {
+                                     if (minInputIn > minOutDb)
+                                     {
+                                         System.out.println("Can ***");
+                                     }
+                                     else
+                                     {
+                                         System.out.println("Can not***"); // ***
+                                     }
+                                 }
+
+                             }
+                         }
+
+                     }
+                     else
+                     {
+                         if (minInputIn < minInDb)
+                         {
+                             System.out.println("Can 999");
+                         }
+                         else
+                         {
+                             System.out.println("Can not 555");
+                         }
+
+                     }
+
+                 } // end of if compare hour
+             }
+
+         } */
             }
-
-
-
-            return View();
-
+            return Content(timein);
         }
 
-        public ActionResult OrderMenu()
+        public ActionResult OrderMenu1()
         {
-            return View();
+
+            var model = db.Menus.ToList();
+
+            return View(model);
         }
 
 
