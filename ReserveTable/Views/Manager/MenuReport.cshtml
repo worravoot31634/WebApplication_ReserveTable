@@ -4,5 +4,281 @@
     Layout = "~/Views/Shared/Manager.cshtml";
 }
 
-<h2>MenuReport</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    input[type=text] {
+  width: 100%;
+  padding: 3px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
+    select {
+        width: 100%;
+        padding: 3px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: white;
+    }
+.fa-eye {
+  font-size: 50px;
+  cursor: pointer;
+  user-select: none;
+}
 
+.fa-eye:hover {
+  color: darkblue;
+}
+</style>
+<header class="w3-container" style="padding-top:40px">
+    <h5><b><i class="fa fa-file fa-fw"></i> รายงานเมนูอาหาร - เครื่องดื่ม</b></h5>
+</header>
+
+
+
+<div class="w3-container">
+    <div class="w3-cell-row">
+        <div class="w3-half w3-container w3-mobile">
+            <table width="100%" align="center" class="w3-table w3-centered w3-large">
+                <tr>
+                    <td width="30%"><h5>เรียก : </h5></td>
+                    <td width="70%">
+                        <font color="white">
+                            <select style="background-color:#363636 ">
+                                <option value="อาหาร">อาหาร</option>
+                                <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+                                <option value="ของหวาน">ของหวาน</option>
+                            </select>
+                        </font>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-half w3-container w3-mobile">
+            <table width="100%" align="center" class="w3-table w3-centered w3-large">
+                <tr>
+                  
+                    <td width="30%"><h5>ค้าหา : </h5> </td>
+                    <td width="40%">
+                        <input type="text" name="Search" value="" id="fname">
+                    </td>
+                    <td width="30%"><button class="fa fa-download w3-button w3-hover-red" style="background-color:red;color:#ffffff; margin: 8px 0;border-radius: 4px;">  PDF  </button></tdwidth="30%">
+                </tr>
+            </table>
+        </div>
+    </div>
+        <table width="100%" align="center" class="w3-table w3-centered w3-large">
+            <tr>
+
+                <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                    <b><p>รูปภาพ</p></b>
+                <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                    <b><p>ชื่อเมนู</p></b>
+                <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                    <b><p>ประเภท</p></b>
+                </th>
+                <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                    <b><p>วัตถุดิบที่ใช้</p></b>
+                </th>
+                <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                    <b><p>แก้ไขเมนู</p></b>
+                </th>
+                <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                    <b><p>แสดงผล</p></b>
+                </th>
+            </tr>
+
+            <tr>
+                <td><img src="~/Content/images/FoodAndDrink/จานเดียว/f1_3.png" style="width:60px"></td>
+                <td><b>ซูชิพะแนงหมู</b></td>
+                <td><b>อาหาร</b></td>
+                <td>
+                    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button" style="background-color:#1E90FF;color:#ffffff;">รายละเอียด</button>
+                </td>
+                <td>
+                    <button onclick="document.getElementById('id02').style.display='block'" class="w3-button" style="background-color:#f59a23;color:#ffffff;">  แก้ไข  </button>
+
+                </td>
+                <td>
+                    <i onclick="myFunction(this)" class="fa fa-eye"></i>
+                </td>
+
+
+            </tr>
+        </table>
+    </div>
+<!--PopUp Details Menu-->
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
+        <header class="w3-container" style="background-color:#EC808D;">
+            <span onclick="document.getElementById('id01').style.display='none'"
+                  class="w3-button w3-pink w3-large w3-display-topright">&times;</span>
+            <font color="white"><center><h2>รายละเอียด</h2></center></font>
+        </header>
+        <div class="w3-cell-row">
+            <center><h3>ซูชิพะแนงหมู</h3></center>
+        </div>
+
+        <div class="w3-row">
+            <div class="w3-half w3-container w3-mobile">
+                <table align="center" style="width:100%">
+                    <tr>
+                        <td>
+                            <h4><b>ส่วนประกอบ</b></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ข้าวญี่ปุ่น</td>
+                        <td>1 กรัม</td>
+                    </tr>
+                    <tr>
+                        <td>หมู</td>
+                        <td>3 กรัม</td>
+                    </tr>
+                    <tr>
+                        <td>สาหร่าย</td>
+                        <td>2 กรัม</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="w3-half w3-container w3-mobile">
+                <table style="width:100%">
+                    <tr>
+                        <td align="center"><img src="~/Content/images/FoodAndDrink/จานเดียว/f1_3.png" style="width:100%"></td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="w3-half w3-container w3-mobile" style="background-color:#EC808D; width:100%; height:65px;">
+                <table align="center" class="w3-table w3-centered w3-large">
+                    <tr>
+                        <td><button onclick="document.getElementById('id01').style.display='none'" class="w3-button" style="background-color:#1E90FF;color:#ffffff;">ตกลง</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--End PopUp Details Menu-->
+<!--PopUp Edit Menu-->
+<div id="id02" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
+        <header class="w3-container" style="background-color:#EC808D;">
+            <span onclick="document.getElementById('id02').style.display='none'"
+                  class="w3-button w3-pink w3-large w3-display-topright">&times;</span>
+            <font color="white"><center><h2>แก้ไขเมนู</h2></center></font>
+        </header>
+        <div class="w3-cell-row">
+            <div class="w3-container w3-mobile">
+                <table style="width:80%" align="center" class="w3-table w3-centered w3-large">
+                    <tr>
+                        <td style="width:30%" >
+                            <h5>ชื่อเมนู </h5>
+                        </td>
+                        <td style="width:70%" >
+                            <input type="text" name="name" value="" id="fname">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:30%">
+                            <h5>ประเภท </h5>
+                        </td>
+                        <td style="width:70%">
+                            <input type="text" name="name" value="" id="fname">
+                        </td>
+                    </tr>
+                </table>
+                <h4><b>ส่วนประกอบ</b></h4>
+                <table style="width:80%" align="center" class="w3-table w3-centered w3-large">
+                    <tr>
+                        <td style="width:30%">
+                            <h5>ข้าวญี่ปุ่น</h5>
+                        </td>
+                        <td style="width:40%">
+                            <input type="text" name="name" value="" id="fname">
+                        </td>
+                        <td style="width:30%">
+                            <h5>กรัม</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:30%">
+                            <h5>หมู</h5>
+                        </td>
+                        <td style="width:40%">
+                            <input type="text" name="name" value="" id="fname">
+                        </td>
+                        <td style="width:30%">
+                            <h5>กรัม</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:30%">
+                            <h5>สาหร่าย</h5>
+                        </td>
+                        <td style="width:40%">
+                            <input type="text" name="name" value="" id="fname">
+                        </td>
+                        <td style="width:30%">
+                            <h5>กรัม</h5>
+                        </td>
+                    </tr>
+                </table>
+                <h4><b>ราคา</b></h4>
+                <table style="width:80%" align="center" class="w3-table w3-centered w3-large">
+                    <tr>
+                        <td style="width:30%">
+                            <h5><b>ต้นทุน</b></h5>
+                        </td>
+                        <td style="width:40%">
+                            <input type="text" name="name" value="" id="fname">
+                        </td>
+                        <td style="width:30%">
+                            <h5><b>บาท</b></h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:30%">
+                            <h5><b>ราคา</b></h5>
+                        </td>
+                        <td style="width:40%">
+                            <input type="text" name="name" value="" id="fname">
+                        </td>
+                        <td style="width:30%">
+                            <h5><b>บาท</b></h5>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="w3-container w3-mobile" style="background-color:#EC808D; width:100%; height:65px;">
+                <table align="center" class="w3-table w3-centered w3-large">
+                    <tr>
+                        <td>
+                            <button class="w3-button" style="background-color:#f59a23;color:#ffffff;">บันทึก</button>
+                            <button button onclick="document.getElementById('id02').style.display='none'" class="w3-button" style="background-color:gray;color:#ffffff;">ยกเลิก</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!--End Edit Menu-->
+
+<!--Function eyes-->
+<script>
+function myFunction(x) {
+    x.classList.toggle("fa-eye-slash");
+}
+</script>
+<!--End Function-->

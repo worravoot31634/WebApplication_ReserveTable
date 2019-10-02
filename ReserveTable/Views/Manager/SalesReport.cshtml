@@ -3,6 +3,102 @@
     ViewBag.Title = "SalesReport";
     Layout = "~/Views/Shared/Manager.cshtml";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    input[type=text] {
+        width: 100%;
+        padding: 3px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
 
-<h2>SalesReport</h2>
+    select {
+        width: 100%;
+        padding: 3px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: white;
+    }
+
+    .fa-eye {
+        font-size: 50px;
+        cursor: pointer;
+        user-select: none;
+    }
+
+        .fa-eye:hover {
+            color: darkblue;
+        }
+</style>
+<header class="w3-container" style="padding-top:40px">
+    <h5><b><i class="fa fa-file fa-fw"></i> รายงานยอดขาย</b></h5>
+</header>
+
+
+<div class="w3-container">
+    <div class="w3-cell-row">
+        <div class="w3-half w3-container w3-mobile">
+            <table width="100%" align="center" class="w3-table w3-centered w3-large">
+                <tr>
+                    <td width="30%"><h5>ราย : </h5></td>
+                    <td width="70%">
+                        <font color="white">
+                            <select style="background-color:#363636 ">
+                                <option value="วัน">วัน</option>
+                                <option value="เดือน">เดือน</option>
+                            </select>
+                        </font>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-half w3-container w3-mobile">
+            <table style="width:30%" align="right" class="w3-table w3-centered w3-large">
+                <tr  >
+                    <td ><button class="fa fa-download w3-button w3-hover-red" style="background-color:red;color:#ffffff; margin: 8px 0;border-radius: 4px;">  PDF  </button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <table width="100%" align="center" class="w3-table w3-centered w3-large">
+        <tr>
+
+            <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                <b><p>ชื่อเมนู</p></b>
+            <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                <b><p>จำนวนที่สั่ง</p></b>
+            <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                <b><p>ราคา/ชิ้น</p></b>
+            </th>
+            <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                <b><p>ราคารวม</p></b>
+            </th>
+        </tr>
+        <tr>
+            <td>ซูชิพะแนงหมู</td>
+            <td>10</td>
+            <td>170</td>
+            <td>1700 บาท</td>
+        </tr>
+        <tr>
+            <td>ซูชิปลาไหล</td>
+            <td>20</td>
+            <td>250</td>
+            <td>5000 บาท</td>
+        </tr>
+        <tr>
+            <td>น้ำชาเขียว</td>
+            <td>40</td>
+            <td>60</td>
+            <td>2400 บาท</td>
+        </tr>
+    </table>
+</div>
+
 

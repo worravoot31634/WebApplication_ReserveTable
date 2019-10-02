@@ -3,5 +3,204 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Manager.cshtml";
 }
+<!-- Header -->
+<header class="w3-container" style="padding-top:40px">
+    <h5><b><i class="fa fa-group"></i> My Dashboard</b></h5>
+   
+</header>
 
 
+<div style="width:100% ;">
+
+    <div class="w3-cell-row">
+
+        <div class="w3-container w3-cell">
+            <div class="w3-row">
+                <div class="w3-half w3-container">
+                    <h3>5 เมนูขายดีประจำวัน</h3>
+                    <!---Grap bast Saler--->
+                    <div id="barchart_values" style="width:550px; height: 350px;">
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                            google.charts.load("current", { packages: ["corechart"] });
+                            google.charts.setOnLoadCallback(drawChart);
+                            function drawChart() {
+                                var data = google.visualization.arrayToDataTable([
+                                  ["Element", "จำนวน", { role: "style" }],
+                                  ["Copper", 8.94, "#b87333"],
+                                  ["Silver", 10.49, "silver"],
+                                  ["Gold", 19.30, "gold"],
+                                  ["Platinum", 50, "color: #e5e4e2"],
+                                  ["Gold", 19.30, "gold"]
+                                ]);
+
+                                var view = new google.visualization.DataView(data);
+                                view.setColumns([0, 1,
+                                                 {
+                                                     calc: "stringify",
+                                                     sourceColumn: 1,
+                                                     type: "string",
+                                                     role: "annotation"
+                                                 },
+                                                 2]);
+
+                                var options = {
+                                    title: "",
+                                    width: 550,
+                                    height: 300,
+                                    bar: { groupWidth: "95%" },
+                                    legend: { position: "none" },
+                                };
+                                var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+                                chart.draw(view, options);
+                            }
+                        </script>
+                    </div>
+                </div>
+
+                <!----Grap cost and price--->
+                <div class="w3-half w3-container">
+                    <h3>ยอดขายประจำเดือน สิงหาคม 2562</h3>
+                    <div id="piechart" style="width:550px; height: 350px;">
+                        <script type="text/javascript">
+                            // Load google charts
+                            google.charts.load('current', { 'packages': ['corechart'] });
+                            google.charts.setOnLoadCallback(drawChart);
+
+                            // Draw the chart and set the chart values
+                            function drawChart() {
+                                var data = google.visualization.arrayToDataTable([
+                                ['Task', 'บาท'],
+                                ['ยอดขาย', 20000],
+                                ['กำไร', 9000],
+                                ['ต้นทุน', 11000],
+                             
+                                ]);
+
+                                // Optional; add a title and set the width and height of the chart
+                                var options = { 'title': '', 'width': 550, 'height': 300 };
+
+                                // Display the chart inside the <div> element with id="piechart"
+                                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                                chart.draw(data, options);
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="w3-cell-row">
+        <div class="w3-container w3-cell">
+            <div class="w3-row">
+                <div class="w3-half w3-container">
+                    <h3>เวลาที่ลูกค้าเข้าบ่อย</h3>
+                    <!--Chart User booking time-->
+                    <div id="chart_div" style="width: 550px; height: 300px;">
+                        <script type="text/javascript">
+                            google.charts.load('current', { 'packages': ['corechart'] });
+                            google.charts.setOnLoadCallback(drawChart);
+
+                            function drawChart() {
+                                var data = google.visualization.arrayToDataTable([
+                                  ['เวลา', 'ลูกค้า'],
+                                  ['09:00', 10],
+                                  ['10:00', 14],
+                                  ['11:00', 20],
+                                  ['12:00', 26],
+                                  ['13:00', 30],
+                                  ['14:00', 36],
+                                  ['15:00', 35],
+                                  ['16:00', 20]
+                                ]);
+
+                                var options = {
+                                    title: '',
+                                    hAxis: { title: 'เวลา', titleTextStyle: { color: '#333' } },
+                                    vAxis: { minValue: 0 }
+
+                                };
+
+                                var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                                chart.draw(data, options);
+                            }
+                        </script>
+                    </div>
+                </div>
+                <div class="w3-half w3-container">
+                    <h3>สถิติการเข้าใช้เว็บ</h3>
+                    <!--Chart User booking time-->
+                    <div id="line_top_x" style="width: 550px; height: 300px;">
+                        
+                        <script type="text/javascript">
+                            google.charts.load('current', { 'packages': ['line'] });
+                            google.charts.setOnLoadCallback(drawChart);
+
+                            function drawChart() {
+
+                                var data = new google.visualization.DataTable();
+                                data.addColumn('number', 'วันที่');
+                                data.addColumn('number', 'การใช้งานผ่านเว็บ(คน)');
+                               
+                                data.addRows([
+                                  [1, 37],
+                                  [2, 30],
+                                  [3, 25],
+                                  [4, 11],
+                                  [5, 11],
+                                  [6, 8],
+                                  [7, 7],
+                                  [8, 12],
+                                  [9, 16],
+                                  [10, 12],
+                                  [11, 5],
+                                  [12, 6],
+                                  [13, 4],
+                                  [14, 16],
+                                  [15, 12],
+                                  [16, 5],
+                                  [17, 16],
+                                  [18, 12],
+                                  [19, 5],
+                                  [20, 16],
+                                  [21, 12],
+                                  [22, 53],
+                                  [23, 16],
+                                  [24, 128],
+                                  [25, 53],
+                                  [26, 16],
+                                  [27, 12],
+                                  [28, 53],
+                                  [29, 53],
+                                  [30, 42]
+                                ]);
+
+                                var options = {
+                                    chart: {
+                                        title: '',
+                                        subtitle: ''
+                                    },
+                                    width: 550,
+                                    height: 300,
+                                    axes: {
+                                        x: {
+                                            10: { side: 'top' }
+                                        }
+                                    }
+                                };
+
+                                var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+                                chart.draw(data, google.charts.Line.convertOptions(options));
+                            }
+                        </script>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>   
+
+    

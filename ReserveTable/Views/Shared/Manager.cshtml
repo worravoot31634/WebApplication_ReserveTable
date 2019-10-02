@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Manager</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="~/Scripts/w3.css">
@@ -12,7 +12,7 @@
     }
 </style>
 <body class="w3-light-grey">
-    @RenderBody()
+    
     <!-- Top container -->
     <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
         <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
@@ -38,15 +38,15 @@
         </div>
         <div class="w3-bar-block">
 
-            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-group fa-fw w3-margin-right"></i>ภาพรวม</a>
-            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-check-square fa-fw w3-margin-right"></i>อนุมัติเมนูอาหาร - เครื่องดื่ม</a>
-            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานเมนูอาหาร - เครื่องดื่ม</a>
-            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานการใช้วัตถุดิบ</a>
-            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานการสั่งอาหาร</a>
-            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานยอดขาย</a>
-            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานช่วงเวลาที่ลูกค้าเข้าร้าน</a>
-            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานสถิติการสมัครเว็บไซต์</a>
-            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานสถิติการเข้าใช้เว็บ</a>
+            <a href="index" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-group fa-fw w3-margin-right"></i>ภาพรวม</a>
+            <a href="ApproveMenu" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-check-square fa-fw w3-margin-right"></i>อนุมัติเมนูอาหาร - เครื่องดื่ม</a>
+            <a href="MenuReport" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานเมนูอาหาร - เครื่องดื่ม</a>
+            <a href="IngredentReport" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานการใช้วัตถุดิบ</a>
+            <a href="OrderReport" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานการสั่งอาหาร</a>
+            <a href="SalesReport" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานยอดขาย</a>
+            <a href="TimeReport" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานช่วงเวลาที่ลูกค้าเข้าร้าน</a>
+            <a href="RegiterReport" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานสถิติการสมัครเว็บไซต์</a>
+            <a href="UsingWebReport" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hover-pink"><i class="fa fa-file fa-fw w3-margin-right"></i>รายงานสถิติการเข้าใช้เว็บ</a>
         </div>
     </nav>
 
@@ -57,16 +57,16 @@
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left:300px;margin-top:43px;">
 
-        <!-- Header -->
-        <header class="w3-container" style="padding-top:22px"></header>
+        @RenderBody()
 
-
+       
 
 
         <!-- End page content -->
     </div>
 
     <script>
+
 // Get the Sidebar
 var mySidebar = document.getElementById("mySidebar");
 
