@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ReserveTable.Models;
-
+using Microsoft.Ajax.Utilities;
 
 namespace ReserveTable.Controllers
 {
@@ -12,7 +12,9 @@ namespace ReserveTable.Controllers
     {
         BookingModels context = new BookingModels();
         BookingDetailsModels conBookingDetail = new BookingDetailsModels();
-        BookingDetails model = new BookingDetails();
+        NanRestaurantEntities1 db = new NanRestaurantEntities1();
+        Menu menu = new Menu();
+
         // GET: BookTable
         public ActionResult Index()
         {
@@ -34,83 +36,59 @@ namespace ReserveTable.Controllers
             return Json(DataBooking, JsonRequestBehavior.AllowGet);
         }*/
 
-            [HttpGet]
+        
+        [HttpPost]
         public ActionResult GetStatus(DateTime DateIn, TimeSpan TimeIn, TimeSpan TimeOut)
         {
-             int numTimeIn, numTimeOut;
-            var DateConvert = DateIn.Date;
-            var DataBookingDate = context.Bookings.ToList().Where(ParmDate => ParmDate.DateIn == DateConvert);
-            BookingDetails bkd = new BookingDetails();
 
-            List<BookingDetails> TableStatus;
+            var model = db.Bookings.ToList();
 
-            if (DataBookingDate != null)
+            string HourIn = TimeIn.Hours.ToString();
+            string HourOut = TimeOut.Hours.ToString();
+            string minIn = TimeIn.Minutes.ToString();
+            string minOut = TimeOut.Minutes.ToString();
+
+
+            // User time data
+            int IntHourIn, IntHourOut , IntminIn , IntminOut;
+            IntHourIn = int.Parse(HourIn);
+            IntHourOut = int.Parse(HourOut);
+            IntminIn = int.Parse(minIn);
+            IntminOut = int.Parse(minOut);
+
+            string answer = "";
+
+            string HourInDB="" , HourOutDB = "" , minInDB = "" , minOutDB = "";
+            int IntHourInDB, IntHourOutDB, IntminInDB, IntminOutDB;
+
+            // create json 
+
+            List<JsonTableStatus> jsonTableStaus = new List<JsonTableStatus>();
+
+            var query2 = from b in db.Bookings
+                         join bd in db.BookingDetails on b.BookingID equals bd.BookingID
+                         where ((b.DateIn == DateIn) && ((b.TimeIn >=TimeIn && b.TimeOut <= TimeOut)  || ((b.TimeOut.Value.Hours <= 12) && (TimeIn < b.TimeIn && TimeIn <= b.TimeOut)) /**/ || ((b.TimeOut.Value.Hours <= 12) && (TimeIn > b.TimeIn && TimeIn <= b.TimeOut)) /**/|| ((b.TimeIn.Value.Hours>=12) &&(b.TimeOut>=TimeIn && TimeOut >= b.TimeOut )) || ((b.TimeIn.Value.Hours >= 12) && (b.TimeOut > TimeIn && TimeOut >= b.TimeIn)) )  && ((b.CheckColor == "1") || (b.CheckColor == "0") || (b.CheckColor == "2")))
+                         select new { bd.TableID, b.CheckColor };
+
+            var publishers2 = query2.ToList();
+            foreach (var itemModel in publishers2)
             {
 
-               
+                jsonTableStaus.Add(new JsonTableStatus { TableID = "T" + itemModel.TableID, StatusID = itemModel.CheckColor });
 
-               
-          
-                foreach (var item in DataBookingDate)
-                {
-
-
-                   numTimeIn = TimeSpan.Compare(TimeIn, item.TimeOut.Value);
-                   numTimeOut = TimeSpan.Compare(TimeOut,item.TimeIn.Value);
-                    
-                    if (0 == 0)
-                    {
-                        var DataBookingDetail = conBookingDetail.BookingDetail.ToList().Where(detail => detail.BookingID == item.BookingID);
-
-                        TableStatus = new List<BookingDetails>()
-                        {
-                            new BookingDetails {BookingID= item.BookingID}
-                        };
-                        return Content(""+TableStatus) ;
-                    }
-                    else if (numTimeIn + numTimeOut == 1 || numTimeIn + numTimeOut == -1)
-                    {
-                      
-                        var DataBookingDetail = conBookingDetail.BookingDetail.ToList().Where(detail => detail.BookingID == item.BookingID);
-                        TableStatus = new List<BookingDetails>()
-                        {
-                            new BookingDetails {BookingID= item.BookingID}
-                        };
-                        return Json(TableStatus, JsonRequestBehavior.AllowGet);
-                    }
-                    else if (numTimeIn + numTimeOut == 2 || numTimeIn + numTimeOut == -2)
-                    {
-                       TableStatus = new List<BookingDetails>()
-                        {
-                            new BookingDetails {BookingID= item.BookingID}
-                        };
-                        TableStatus = new List<BookingDetails>()
-                        {
-                            new BookingDetails {BookingID= item.BookingID}
-                        };
-                        return Json(TableStatus, JsonRequestBehavior.AllowGet);
-                    }
-
-                    
-
-                }
-
-                
             }
+            return Json(jsonTableStaus, JsonRequestBehavior.AllowGet);
+        } //end of get Status
 
-
-
-            return View();
-
-        }
-
-        public ActionResult OrderMenu()
+        public ActionResult OrderMenu1()
         {
-            return View();
+
+            var model = db.Menus.ToList();
+
+            return View(model);
         }
 
-
-
+        
 
     }
 }

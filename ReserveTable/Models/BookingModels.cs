@@ -9,13 +9,13 @@ namespace ReserveTable.Models
     public class BookingModels : DbContext
 
     {
-        public DbSet<Booking> Bookings { get; set; }
+      /*  public DbSet<Booking> Bookings { get; set; } */
         
 
     }
 
     public class BookingDetailsModels : DbContext
     {
-        public DbSet<BookingDetails> BookingDetail { get; set; }
+        /* public DbSet<BookingDetails> BookingDetail { get; set; } */
     }
 }

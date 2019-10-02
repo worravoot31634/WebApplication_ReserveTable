@@ -17,10 +17,7 @@ namespace ReserveTable.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Account()
         {
-            this.Booking = new HashSet<Booking>();
-            this.Employee = new HashSet<Employee>();
-            this.Member = new HashSet<Member>();
-            this.Payment = new HashSet<Payment>();
+            this.Members = new HashSet<Member>();
         }
     
         public int AccountID { get; set; }
@@ -29,14 +26,7 @@ namespace ReserveTable.Models
         public Nullable<System.DateTime> RegisterDate { get; set; }
         public string Role { get; set; }
     
-        public virtual AccountDetails AccountDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Booking> Booking { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employee { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Member> Member { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Payment> Payment { get; set; }
+        public virtual ICollection<Member> Members { get; set; }
     }
 }

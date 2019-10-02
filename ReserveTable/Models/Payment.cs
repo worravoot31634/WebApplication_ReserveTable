@@ -26,8 +26,5 @@ namespace ReserveTable.Models
         public Nullable<System.DateTime> PatmentDate { get; set; }
         public Nullable<decimal> TotalPrice { get; set; }
         public Nullable<int> PaymentStatus { get; set; }
-    
-        public virtual Account Account { get; set; }
-        public virtual Orders Orders { get; set; }
     }
 }

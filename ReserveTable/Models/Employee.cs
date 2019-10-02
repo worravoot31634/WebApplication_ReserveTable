@@ -24,7 +24,5 @@ namespace ReserveTable.Models
         public string Email { get; set; }
         public string Position { get; set; }
         public string Address { get; set; }
-    
-        public virtual Account Account { get; set; }
     }
 }

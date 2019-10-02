@@ -14,12 +14,6 @@ namespace ReserveTable.Models
     
     public partial class Menu
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Menu()
-        {
-            this.OrderDetails = new HashSet<OrderDetails>();
-        }
-    
         public int MenuID { get; set; }
         public string MenuName { get; set; }
         public Nullable<decimal> Cost { get; set; }
@@ -28,9 +22,5 @@ namespace ReserveTable.Models
         public string MenuImage { get; set; }
         public Nullable<int> Visible { get; set; }
         public Nullable<int> AcceptedStatus { get; set; }
-    
-        public virtual MenuDetails MenuDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
     }
 }
