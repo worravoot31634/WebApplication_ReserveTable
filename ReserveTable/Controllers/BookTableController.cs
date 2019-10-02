@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ReserveTable.Models;
-
+using Microsoft.Ajax.Utilities;
 
 namespace ReserveTable.Controllers
 {
@@ -36,174 +36,49 @@ namespace ReserveTable.Controllers
             return Json(DataBooking, JsonRequestBehavior.AllowGet);
         }*/
 
-         public ActionResult GetStatus()
-        {
-
-            return View();
-        }
-        [HttpGet]
+        
+        [HttpPost]
         public ActionResult GetStatus(DateTime DateIn, TimeSpan TimeIn, TimeSpan TimeOut)
         {
 
             var model = db.Bookings.ToList();
 
-            
-            string timein = TimeIn.ToString("HH");
+            string HourIn = TimeIn.Hours.ToString();
+            string HourOut = TimeOut.Hours.ToString();
+            string minIn = TimeIn.Minutes.ToString();
+            string minOut = TimeOut.Minutes.ToString();
 
-            foreach (var item in model)
+
+            // User time data
+            int IntHourIn, IntHourOut , IntminIn , IntminOut;
+            IntHourIn = int.Parse(HourIn);
+            IntHourOut = int.Parse(HourOut);
+            IntminIn = int.Parse(minIn);
+            IntminOut = int.Parse(minOut);
+
+            string answer = "";
+
+            string HourInDB="" , HourOutDB = "" , minInDB = "" , minOutDB = "";
+            int IntHourInDB, IntHourOutDB, IntminInDB, IntminOutDB;
+
+            // create json 
+
+            List<JsonTableStatus> jsonTableStaus = new List<JsonTableStatus>();
+
+            var query2 = from b in db.Bookings
+                         join bd in db.BookingDetails on b.BookingID equals bd.BookingID
+                         where ((b.DateIn == DateIn) && ((b.TimeIn >=TimeIn && b.TimeOut <= TimeOut)  || ((b.TimeOut.Value.Hours <= 12) && (TimeIn < b.TimeIn && TimeIn <= b.TimeOut)) /**/ || ((b.TimeOut.Value.Hours <= 12) && (TimeIn > b.TimeIn && TimeIn <= b.TimeOut)) /**/|| ((b.TimeIn.Value.Hours>=12) &&(b.TimeOut>=TimeIn && TimeOut >= b.TimeOut )) || ((b.TimeIn.Value.Hours >= 12) && (b.TimeOut > TimeIn && TimeOut >= b.TimeIn)) )  && ((b.CheckColor == "1") || (b.CheckColor == "0") || (b.CheckColor == "2")))
+                         select new { bd.TableID, b.CheckColor };
+
+            var publishers2 = query2.ToList();
+            foreach (var itemModel in publishers2)
             {
 
-                // sumIn = in.split(":");
-                /* sumOut = out.split(":"); // Time out by user and convert to string
-                 sumIn = in.split(":"); // Time in by user and convert to string
-                 numIn = arInDb[i].split(":"); // convert time In from db to string
-                 numOut = arOutDb[i].split(":"); // convert time out from db to string
+                jsonTableStaus.Add(new JsonTableStatus { TableID = "T" + itemModel.TableID, StatusID = itemModel.CheckColor });
 
-                 int hourInputOut = Integer.parseInt(sumOut[0]); // convert time Out by user from string to int hour
-
-                 int minInputOut = Integer.parseInt(sumOut[1]); // convert time Out by user from string to int minuses
-
-                 int hourInputIn = Integer.parseInt(sumIn[0]); // convert time In by user from string to int hour
-
-                 int minInputIn = Integer.parseInt(sumIn[1]); // convert time In by user from string to int minuses
-
-                 int hourInDb = Integer.parseInt(numIn[0]); // convert time form db from string to int hour In
-                 int minInDb = Integer.parseInt(numIn[1]); // convert time by form db from string to int minuses In
-
-                 int hourOutDb = Integer.parseInt(numOut[0]); // convert time form db from string to int hour Out
-                 int minOutDb = Integer.parseInt(numOut[1]); // convert time by form db from string to int minuses Out
-
-                 System.out.println(" Hour Input Out = " + hourInputOut + " Hour In Db = " + hourInDb);
-                 System.out.println(" Min Input Out = " + minInputOut + " Min In Db = " + minInDb);
-
-                 System.out.println(" Hour In Input = " + hourInputIn + " Hour Out Db = " + hourOutDb);
-                 System.out.println(" Min In Input = " + minInputIn + " Min Out Db = " + minOutDb);
-
-                 if (hourInputOut < hourInDb)
-                 { // compare hour
-
-                     System.out.println("Can");
-
-                 }
-                 else if (hourInputOut >= hourInDb)
-                 {
-
-                     if (hourInputOut != hourInDb)
-                     {
-
-                         if (hourInputOut > hourInDb)
-                         {
-
-                             if (hourInputIn >= hourOutDb)
-                             {
-                                 if (hourInputIn == hourOutDb)
-                                 {
-                                     if (minInputIn > minOutDb)
-                                     {
-                                         System.out.println("Can 99");
-                                     }
-                                     else
-                                     {
-                                         System.out.println("Can not");
-                                     }
-                                 }
-                                 else
-                                 {
-                                     if (hourInputIn > hourInDb)
-                                     {
-                                         System.out.println("Can 888");
-                                     }
-                                     else
-                                     {
-                                         System.out.println("Can not");
-                                     }
-                                 }
-                             }
-                             else
-                             {
-                                 System.out.println("Can not 66-");
-                             }
-                         }
-                         else
-                         {
-                             if (minInputOut < minInDb)
-                             { // compare minuses
-                                 if (hourInputOut == hourInDb)
-                                 {
-                                     System.out.println("Can 222");
-                                 }
-                                 else
-                                 {
-                                     if (hourInputIn < hourOutDb)
-                                     { // check font
-
-                                         System.out.println("Can not");
-
-                                     }
-                                     else if (hourInputIn >= hourOutDb)
-                                     {
-
-                                         if (minInputIn > minOutDb)
-                                         {
-                                             System.out.println("Can");
-                                         }
-                                         else if (minInputIn <= minOutDb)
-                                         {
-                                             System.out.println("Can not 11");
-                                         }
-                                     } // end of check font
-                                 }
-
-                             }
-                             else if (minInputOut >= minInDb)
-                             {
-
-                                 if (minInputOut == minInDb)
-                                 {
-                                     System.out.println("Can 333");
-                                 }
-                                 else if (minInputOut > minInDb)
-                                 {
-                                     System.out.println("Can not 44");
-                                 }
-                             }
-                             else
-                             {
-                                 {
-                                     if (minInputIn > minOutDb)
-                                     {
-                                         System.out.println("Can ***");
-                                     }
-                                     else
-                                     {
-                                         System.out.println("Can not***"); // ***
-                                     }
-                                 }
-
-                             }
-                         }
-
-                     }
-                     else
-                     {
-                         if (minInputIn < minInDb)
-                         {
-                             System.out.println("Can 999");
-                         }
-                         else
-                         {
-                             System.out.println("Can not 555");
-                         }
-
-                     }
-
-                 } // end of if compare hour
-             }
-
-         } */
             }
-            return Content(timein);
-        }
+            return Json(jsonTableStaus, JsonRequestBehavior.AllowGet);
+        } //end of get Status
 
         public ActionResult OrderMenu1()
         {
@@ -213,8 +88,7 @@ namespace ReserveTable.Controllers
             return View(model);
         }
 
-
-
+        
 
     }
 }
