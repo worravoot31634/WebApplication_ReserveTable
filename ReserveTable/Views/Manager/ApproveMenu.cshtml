@@ -4,5 +4,152 @@
     Layout = "~/Views/Shared/Manager.cshtml";
 }
 
-<h2>ApproveMenu</h2>
+<!-- Header -->
+<header class="w3-container" style="padding-top:40px">
+    <h5><b><i class="fa fa-check-square"></i> อนุมัติเมนูอาหาร - เครื่องดื่ม</b></h5>
+</header>
+<!--Table-->
+<div class="w3-container">
+    
+    <table width="60%" align="center" class="w3-table w3-centered w3-large">
+        <tr>
 
+            <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                <b><p>ชื่อเมนู</p></b>
+            <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                <b><p>ประเภทอาหาร</p></b>
+            <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                <b><p>ราคา</p></b>
+            </th>
+            <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                <b><p>ผู้เสนอ</p></b>
+            </th>
+            <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                <b><p>รายละเอียด</p></b>
+            </th>
+            <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                <b><p>อนุมัติ</p></b>
+            </th>
+        </tr>
+
+        <tr>
+            <td><b>ซูชิพะแนงหมู</b></td>
+            <td><b>อาหาร</b></td>
+            <td><b>140 บาท</b></td>
+            <td><b>อาทิตย์ ด้านชอบ</b></td>
+            <td>
+                <button onclick="document.getElementById('id01').style.display='block'" class="w3-button" style="background-color:#1E90FF;color:#ffffff;">รายละเอียด</button>
+
+            </td>
+            <td>
+                <button class="fa fa-check w3-button w3-hover-green" style="background-color:green;color:#ffffff;"></button>
+                <button onclick="document.getElementById('id02').style.display='block'" class="fa fa-remove w3-button w3-hover-red" style="background-color:red;color:#ffffff;"></button>
+            </td>
+
+
+        </tr>
+    </table>
+</div>
+<!--End Table-->
+
+<!--PopUp Details Menu-->
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
+        <header class="w3-container" style="background-color:#EC808D;">
+            <span onclick="document.getElementById('id01').style.display='none'"
+                  class="w3-button w3-pink w3-large w3-display-topright">&times;</span>
+            <font color="white"><center><h2>รายละเอียด</h2></center></font>
+        </header>
+        <div class="w3-cell-row">
+            <center><h3>ซูชิพะแนงหมู</h3></center>
+        </div>
+
+        <div class="w3-row">
+            <div class="w3-half w3-container w3-mobile">
+                <table align="center" style="width:100%">
+                    <tr>
+                        <td>
+                            <h4><b>ส่วนประกอบ</b></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ข้าวญี่ปุ่น</td>
+                        <td>1 กรัม</td>
+                    </tr>
+                    <tr>
+                        <td>หมู</td>
+                        <td>3 กรัม</td>
+                    </tr>
+                    <tr>
+                        <td>สาหร่าย</td>
+                        <td>2 กรัม</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="w3-half w3-container w3-mobile">
+                <table style="width:100%">
+                    <tr>
+                        <td align="center"><img src="~/Content/images/FoodAndDrink/จานเดียว/f1_3.png" style="width:100%"></td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="w3-half w3-container w3-mobile" style="width:100%">
+                <center>
+                    <table style="width:60%">
+                        <tr align="center">
+                            <td>ต้นทุน</td>
+                            <td>10</td>
+                            <td>บาท</td>
+                        </tr>
+                        <tr align="center">
+                            <td>ราคา</td>
+                            <td>140</td>
+                            <td>บาท</td>
+                        </tr>
+                    </table>
+                    <br>
+                </center>
+
+            </div>
+            <div class="w3-half w3-container w3-mobile" style="background-color:#EC808D; width:100%; height:65px;">
+                <table align="center" class="w3-table w3-centered w3-large">
+                    <tr>
+                        <td><button onclick="document.getElementById('id01').style.display='none'" class="w3-button" style="background-color:#1E90FF;color:#ffffff;">ตกลง</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--End PopUp Details Menu-->
+
+<!--PopUp Confirm Cancel-->
+<div id="id02" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
+        <header class="w3-container" style="background-color:#EC808D;">
+            <span onclick="document.getElementById('id02').style.display='none'"
+                  class="w3-button w3-pink w3-large w3-display-topright">&times;</span>
+            <font color="white"><center><h2>แจ้งเตือน</h2></center></font>
+        </header>
+        <div class="w3-cell-row">
+            <br>
+            <center><h3>คุณต้องการไม่อนุมัติใช่หรือไม่</h3></center>
+            <br>
+            <div class="w3-half w3-container w3-mobile" style="background-color:#EC808D; width:100%; height:65px;">
+                <table align="center" class="w3-table w3-centered w3-large">
+                    <tr>
+                        <td>
+                        <button class="w3-button" style="background-color:red;color:#ffffff;">ใช่</button>
+                        <button button onclick="document.getElementById('id02').style.display='none'" class="w3-button" style="background-color:gray;color:#ffffff;">ไม่ใช่</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+   
+    </div>
+</div>
+<!--End PopUp Confirm Cancel-->

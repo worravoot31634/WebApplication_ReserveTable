@@ -4,5 +4,88 @@
     Layout = "~/Views/Shared/Manager.cshtml";
 }
 
-<h2>UsingWebReport</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    input[type=text] {
+        width: 100%;
+        padding: 3px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
 
+    select {
+        width: 100%;
+        padding: 3px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: white;
+    }
+
+    .fa-eye {
+        font-size: 50px;
+        cursor: pointer;
+        user-select: none;
+    }
+
+        .fa-eye:hover {
+            color: darkblue;
+        }
+</style>
+<header class="w3-container" style="padding-top:40px">
+    <h5><b><i class="fa fa-file fa-fw"></i> รายงานสถิติการเข้าใช้เว็บ</b></h5>
+</header>
+
+
+<div class="w3-container" style="width:50%">
+    <div class="w3-cell-row">
+        <div class="w3-half w3-container w3-mobile">
+            <table style="width:100%" align="center" class="w3-table w3-centered w3-large">
+                <tr>
+                    <td width="30%"><h5>เรียง : </h5></td>
+                    <td width="70%">
+                        <font color="white">
+                            <select style="background-color:#363636 ">
+                                <option value="จำนวนครั้ง">จำนวนครั้ง</option>
+                                <option value="เวลา">เวลา</option>
+                            </select>
+                        </font>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-half w3-container w3-mobile">
+            <table style="width:30%" align="right" class="w3-table w3-centered w3-large">
+                <tr>
+                    <td><button class="fa fa-download w3-button w3-hover-red" style="background-color:red;color:#ffffff; margin: 8px 0;border-radius: 4px;">  PDF  </button></tdwidth="30%">
+                </tr>
+            </table>
+        </div>
+    </div>
+    <table width="100%" align="center" class="w3-table w3-centered w3-large">
+        <tr>
+
+            <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                <b><p>วันที่</p></b>
+            <th style="font-size:17px; background-color:#363636; color:white;" class="w3-center">
+                <b><p>เข้าชม</p></b>
+        </tr>
+        <tr>
+            <td>31/08/2562</td>
+            <td>70 ครั้ง</td>
+        </tr>
+        <tr>
+            <td>30/08/2562</td>
+            <td>55 ครั้ง</td>
+        </tr>
+        <tr>
+            <td>29/08/2562</td>
+            <td>40 ครั้ง</td>
+        </tr>
+    </table>
+</div>
