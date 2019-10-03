@@ -88,8 +88,14 @@ namespace ReserveTable.Controllers
             return View(model);
         }
 
-        
 
+        public ActionResult OrderMenu()
+        {
+
+            var model = db.Menus.ToList();
+
+            return View(model);
+        }
     }
 }
     

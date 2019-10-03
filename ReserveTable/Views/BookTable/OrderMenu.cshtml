@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<ReserveTable.Models.Menu>
 @{
     ViewBag.Title = "OrderMenu";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -124,7 +124,7 @@ form #input-wrap {
   padding: 0px;
 }
 
-input#number {
+input.number {
   text-align: center;
   border: none;
   border-top: 1px solid #ddd;
@@ -151,15 +151,15 @@ input[type=number]::-webkit-outer-spin-button {
         </tr>
     </table>
 
-    <table width="60%" align="center">
+    <table width="70%" align="center">
         <tr>
-            
-            
-                <td style="font-size:17px; background-color:#333; color:white;cursor:pointer" class="w3-center">
-                    <b>@Html.ActionLink("เลือกโต๊ะ" , "Index" , "BookTable" ,new { @style= "width: 100%; height: 100%;display: block;text-decoration: none;" })</b>
 
-                </td>
-            
+
+            <td style="font-size:17px; background-color:#333; color:white;cursor:pointer" class="w3-center">
+                <b>@Html.ActionLink("เลือกโต๊ะ", "Index", "BookTable", new { @style = "width: 100%; height: 100%;display: block;text-decoration: none;" })</b>
+
+            </td>
+
 
             <td style="font-size:17px; background-color:#EC808D; color:white;" class="w3-center">
                 <p>เลือกอาหาร</p>
@@ -175,7 +175,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 
-    <table width="60%" align="center">
+    <table width="70%" align="center">
         <tr>
 
             <td>
@@ -186,87 +186,711 @@ input[type=number]::-webkit-outer-spin-button {
                 <button class="tablink" onclick="openPage('Drinks', this, 'white', 'black')">เครื่องดื่ม</button>
 
                 <div id="FastFood" class="tabcontent">
-                   
+
                     <div class="w3-cell-row">
-
                         <div class="w3-container w3-cell">
                             <div class="w3-row">
-                                <div class="w3-half w3-container">
-                                    <!--รูปเมนู-->
-                                    <div style="cursor: pointer;" class="card w3-white" width="100%"  onclick="document.getElementById('id01').style.display='block'">
-                                        <img src="~/Content/images/FoodAndDrink/จานเดียว/f1_1.png" alt="Avatar" style="width:100%">
-                                        <div class="container">
-                                            <center><label style="font-size:20px; color:#EC808D;">ข้าวหน้าหมู</label></center>
-                                            <center><div style="background-color:black; font-size:17px; color:white; border-radius:20px;"><label>ราคา 100 บาท</label></div></center><br />
+
+
+                                @foreach (var item in Model)
+                                {
+                                    if (item.Type.Equals("FastFood"))
+                                    {
+                                        @:<div class="w3-container w3-quarter">
+ <!--รูปเมนู-->
+                                            @:<div style="cursor: pointer;" class="card w3-white" width="100%" onclick="document.getElementById('FastFood-@Html.DisplayFor(modelItem => item.MenuID)').style.display='block'">
+                                                @:<img src=@Url.Content("~/Content/images/FoodAndDrink/%e0%b8%88%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%94%e0%b8%b5%e0%b8%a2%e0%b8%a7/" + @item.MenuImage) alt="Avatar" style="width:100%">
+                                                @:<div class="container">
+                                                    @:<center><label style="font-size:20px; color:#EC808D;">@Html.DisplayFor(modelItem => item.MenuName)</label></center>
+                                                    @:<center><div style="background-color:black; font-size:17px; color:white; border-radius:20px;"><label>@Html.DisplayFor(modelItem => item.Price) บาท</label></div></center><br />
+                                                @:</div>
+                                            @:</div>
+                                        @:</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        <!--Modals FastFood-->
+                                        <div id="FastFood-@Html.DisplayFor(modelItem => item.MenuID)" class="w3-modal">
+                                            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
+                                                <header class="w3-container" style="background-color:#EC808D;">
+                                                    <span onclick="document.getElementById('FastFood-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'"
+                                                          class="w3-button w3-pink w3-large w3-display-topright">&times;</span>
+                                                    <center><h2>รายละเอียด</h2></center>
+                                                </header>
+
+                                                <div class="w3-bar w3-border-bottom">
+                                                    <br />
+                                                    <div class="w3-cell-row">
+                                                        <div class="w3-container w3-cell" style="width:40%">
+
+                                                            <img width="100%" src=@Url.Content("~/Content/images/FoodAndDrink/%e0%b8%88%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%94%e0%b8%b5%e0%b8%a2%e0%b8%a7/" + @item.MenuImage) />
+
+                                                        </div>
+
+                                                        <div class="w3-container w3-cell" style="width:40%">
+                                                            <div class="w3-container">
+                                                                <br />
+                                                                <center><label style="align-content:center; font-size:20px; color:black;">@Html.DisplayFor(modelItem => item.MenuName)</label></center>
+                                                            </div>
+
+                                                            <br />
+
+                                                            <div class="w3-container">
+
+                                                                <center><label style="background-color:black; border-radius:10px; color:white; align-content:center; font-size:20px;">ราคา @Html.DisplayFor(modelItem => item.Price) บาท</label></center>
+
+                                                            </div>
+                                                            <br />
+
+
+                                                        </div>
+                                                        @{
+
+                                                            var text = "Nfast";
+                                                            var Qty = "Qfast";
+                                                        }
+
+                                                    </div>
+                                                    <div class="w3-cell-row">
+                                                        <div class="w3-container w3-cell w3-center" style="width:80%">
+                                                            <label style="align-content:center; font-size:20px; color:black;">จำนวน</label>
+                                                            <button class="w3-button w3-red w3-circle" id="decrease" onclick="decreaseValue('@text@Html.DisplayFor(modelItem => item.MenuID)')" value="Decrease Value">-</button>
+                                                            <input class="number" type="number" id="@text@Html.DisplayFor(modelItem => item.MenuID)" value="1" />
+                                                            <button class="w3-button w3-green w3-circle" id="increase" onclick="increaseValue('@text@Html.DisplayFor(modelItem => item.MenuID)')" value="Increase Value">+</button>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <br />
+
+
+
+                                                    <div align="right">
+                                                        <div class="w3-container w3-light-grey w3-padding">
+                                                            <button class="w3-red w3-button w3-border add-row"
+                                                                    onclick="document.getElementById('FastFood-@Html.DisplayFor(modelItem => item.MenuID)').style.display = 'none'; setValue(@Html.DisplayFor(modelItem => item.MenuID),'@Html.DisplayFor(modelItem => item.MenuImage)','@Html.DisplayFor(modelItem => item.MenuName)','@text@Html.DisplayFor(modelItem => item.MenuID)',@Html.DisplayFor(modelItem => item.Price))">
+                                                                ยืนยัน
+                                                            </button>
+
+
+
+                                                            <button class="w3-button  w3-white w3-border"
+                                                                    onclick="document.getElementById('FastFood-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'">
+                                                                ยกเลิก
+                                                            </button>
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    
-
-
-                                </div>
-                                <div class="w3-half w3-container">
-                                  
-                                    <!--รูปเมนู-->
-                                    <div class="card w3-white" width="100%">
-                                        <img src="~/Content/images/FoodAndDrink/จานเดียว/f1_2.png" alt="Avatar" style="width:100%">
-                                        <div class="container">
-                                            <center><label style="font-size:20px; color:#EC808D;">ข้าวหน้าหมู</label></center>
-                                            <center><div style="background-color:black; font-size:17px; color:white; border-radius:20px;"><label>ราคา 100 บาท</label></div></center><br />
-                                        </div>
-                                    </div>
-                                </div>
+                                    }
+                                }
                             </div>
                         </div>
 
-                        <div class="w3-container w3-cell">
-                            <div class="w3-row">
-                                <div class="w3-half w3-container">
-                                    <!--รูปเมนู-->
-                                    <div class="card w3-white" width="100%">
-                                        <img src="~/Content/images/FoodAndDrink/จานเดียว/f1_3.png" alt="Avatar" style="width:100%">
-                                        <div class="container">
-                                            <center><label style="font-size:20px; color:#EC808D;">ข้าวหน้าหมู</label></center>
-                                            <center><div style="background-color:black; font-size:17px; color:white; border-radius:20px;"><label>ราคา 100 บาท</label></div></center><br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w3-half w3-container">
-                                    <!--รูปเมนู-->
-                                    <div class="card w3-white" width="100%">
-                                        <img src="~/Content/images/FoodAndDrink/จานเดียว/f1_4.png" alt="Avatar" style="width:100%">
-                                        <div class="container">
-                                            <center><label style="font-size:20px; color:#EC808D;">ข้าวหน้าหมู</label></center>
-                                            <center><div style="background-color:black; font-size:17px; color:white; border-radius:20px;"><label>ราคา 100 บาท</label></div></center><br />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
 
                     </div>
                 </div>
-
+                <!--Snacks-->
                 <div id="Snacks" class="tabcontent">
-                    <h3>อาหารว่าง</h3>
-                    <p>Some news this fine day!</p>
+                    <div class="w3-container w3-cell">
+                        <div class="w3-row">
+                            @foreach (var item in Model)
+                            {
+                                if (item.Type.Equals("Snack"))
+                                {
+                                    @:<div class="w3-container w3-quarter">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        @:<div style="cursor: pointer;" class="card w3-white" width="100%" onclick="document.getElementById('Snacks-@Html.DisplayFor(modelItem => item.MenuID)').style.display='block'">
+                                            @:<img src=@Url.Content("~/Content/images/FoodAndDrink/snacks/" + @item.MenuImage) alt="Avatar" style="width:100%">
+                                            @:<div class="container">
+                                                @:<center><label style="font-size:20px; color:#EC808D;">@Html.DisplayFor(modelItem => item.MenuName)</label></center>
+                                                @:<center><div style="background-color:black; font-size:17px; color:white; border-radius:20px;"><label>@Html.DisplayFor(modelItem => item.Price) บาท</label></div></center><br />
+                                            @:</div>
+                                        @:</div>
+                                    @:</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <!--Modals Snacks-->
+                                    <div id="Snacks-@Html.DisplayFor(modelItem => item.MenuID)" class="w3-modal">
+                                        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
+                                            <header class="w3-container" style="background-color:#EC808D;">
+                                                <span onclick="document.getElementById('Snacks-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'"
+                                                      class="w3-button w3-pink w3-large w3-display-topright">&times;</span>
+                                                <center><h2>รายละเอียด</h2></center>
+                                            </header>
+
+                                            <div class="w3-bar w3-border-bottom">
+                                                <br />
+                                                <div class="w3-cell-row">
+                                                    <div class="w3-container w3-cell" style="width:40%">
+
+                                                        <img width="100%" src=@Url.Content("~/Content/images/FoodAndDrink/snacks/" + @item.MenuImage) />
+
+                                                    </div>
+
+                                                    <div class="w3-container w3-cell" style="width:40%">
+                                                        <div class="w3-container">
+                                                            <br />
+                                                            <center><label style="align-content:center; font-size:20px; color:black;">@Html.DisplayFor(modelItem => item.MenuName)</label></center>
+                                                        </div>
+
+                                                        <br />
+
+                                                        <div class="w3-container">
+
+                                                            <center><label style="background-color:black; border-radius:10px; color:white; align-content:center; font-size:20px;">ราคา @Html.DisplayFor(modelItem => item.Price) บาท</label></center>
+
+                                                        </div>
+                                                        <br />
+
+
+                                                    </div>
+                                                    @{
+
+                                                        var text = "Nsnack";
+                                                    }
+
+                                                </div>
+                                                <div class="w3-cell-row">
+                                                    <div class="w3-container w3-cell w3-center" style="width:80%">
+                                                        <label style="align-content:center; font-size:20px; color:black;">จำนวน</label>
+                                                        <button class="w3-button w3-red w3-circle" id="decrease" onclick="decreaseValue('@text@Html.DisplayFor(modelItem => item.MenuID)')" value="Decrease Value">-</button>
+                                                        <input class="number" type="number" id="@text@Html.DisplayFor(modelItem => item.MenuID)" value="1" />
+                                                        <button class="w3-button w3-green w3-circle" id="increase" onclick="increaseValue('@text@Html.DisplayFor(modelItem => item.MenuID)')" value="Increase Value">+</button>
+
+                                                    </div>
+                                                </div>
+
+                                                <br />
+
+
+
+                                                <div align="right">
+                                                    <div class="w3-container w3-light-grey w3-padding">
+                                                        <button class="w3-red w3-button w3-border"
+                                                                onclick="document.getElementById('Snacks-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'">
+                                                            ยืนยัน
+                                                        </button>
+
+
+
+                                                        <button class="w3-button  w3-white w3-border"
+                                                                onclick="document.getElementById('Snacks-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'">
+                                                            ยกเลิก
+                                                        </button>
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                }
+                            }
+                        </div>
+                    </div>
+
+
+
                 </div>
 
 
+                <!--Sushi-->
 
                 <div id="Shushi" class="tabcontent">
-                    <h3>ซูชิ</h3>
-                    <p>Who we are and what we do.</p>
+                    <div class="w3-container w3-cell">
+                        <div class="w3-row">
+                            @foreach (var item in Model)
+                            {
+                                if (item.Type.Equals("Sushi"))
+                                {
+                                    @:<div class="w3-container w3-quarter">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        @:<div style="cursor: pointer;" class="card w3-white" width="100%" onclick="document.getElementById('Sushi-@Html.DisplayFor(modelItem => item.MenuID)').style.display='block'">
+                                            @:<img src=@Url.Content("~/Content/images/FoodAndDrink/sushi/" + @item.MenuImage) alt="Avatar" style="width:100%">
+                                            @:<div class="container">
+                                                @:<center><label style="font-size:20px; color:#EC808D;">@Html.DisplayFor(modelItem => item.MenuName)</label></center>
+                                                @:<center><div style="background-color:black; font-size:17px; color:white; border-radius:20px;"><label>@Html.DisplayFor(modelItem => item.Price) บาท</label></div></center><br />
+                                            @:</div>
+                                        @:</div>
+                                    @:</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <!--Modals Shshi-->
+                                    <div id="Sushi-@Html.DisplayFor(modelItem => item.MenuID)" class="w3-modal">
+                                        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
+                                            <header class="w3-container" style="background-color:#EC808D;">
+                                                <span onclick="document.getElementById('Sushi-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'"
+                                                      class="w3-button w3-pink w3-large w3-display-topright">&times;</span>
+                                                <center><h2>รายละเอียด</h2></center>
+                                            </header>
+
+                                            <div class="w3-bar w3-border-bottom">
+                                                <br />
+                                                <div class="w3-cell-row">
+                                                    <div class="w3-container w3-cell" style="width:40%">
+
+                                                        <img width="100%" src=@Url.Content("~/Content/images/FoodAndDrink/sushi/" + @item.MenuImage) />
+
+                                                    </div>
+
+                                                    <div class="w3-container w3-cell" style="width:40%">
+                                                        <div class="w3-container">
+                                                            <br />
+                                                            <center><label style="align-content:center; font-size:20px; color:black;">@Html.DisplayFor(modelItem => item.MenuName)</label></center>
+                                                        </div>
+
+                                                        <br />
+
+                                                        <div class="w3-container">
+
+                                                            <center><label style="background-color:black; border-radius:10px; color:white; align-content:center; font-size:20px;">ราคา @Html.DisplayFor(modelItem => item.Price) บาท</label></center>
+
+                                                        </div>
+                                                        <br />
+
+
+                                                    </div>
+                                                    @{
+
+                                                        var text = "Nsushi";
+                                                    }
+
+                                                </div>
+                                                <div class="w3-cell-row">
+                                                    <div class="w3-container w3-cell w3-center" style="width:80%">
+                                                        <label style="align-content:center; font-size:20px; color:black;">จำนวน</label>
+                                                        <button class="w3-button w3-red w3-circle" id="decrease" onclick="decreaseValue('@text@Html.DisplayFor(modelItem => item.MenuID)')" value="Decrease Value">-</button>
+                                                        <input class="number" type="number" id="@text@Html.DisplayFor(modelItem => item.MenuID)" value="1" />
+                                                        <button class="w3-button w3-green w3-circle" id="increase" onclick="increaseValue('@text@Html.DisplayFor(modelItem => item.MenuID)')" value="Increase Value">+</button>
+
+                                                    </div>
+                                                </div>
+
+                                                <br />
+
+
+
+                                                <div align="right">
+                                                    <div class="w3-container w3-light-grey w3-padding">
+                                                        <button class="w3-red w3-button w3-border"
+                                                                onclick="document.getElementById('Sushi-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'">
+                                                            ยืนยัน
+                                                        </button>
+
+
+
+                                                        <button class="w3-button  w3-white w3-border"
+                                                                onclick="document.getElementById('Sushi-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'">
+                                                            ยกเลิก
+                                                        </button>
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                }
+                            }
+                        </div>
+                    </div>
                 </div>
 
+
+                <!--Dessert-->
                 <div id="Dessert" class="tabcontent">
-                    <h3>ของหวาน</h3>
-                    <p>Who we are and what we do.</p>
-                </div>
+                    <div class="w3-container w3-cell">
+                        <div class="w3-row">
+                            @foreach (var item in Model)
+                            {
+                                if (item.Type.Equals("Dessert"))
+                                {
+                                    @:<div class="w3-container w3-quarter">
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        @:<div style="cursor: pointer;" class="card w3-white" width="100%" onclick="document.getElementById('Dessert-@Html.DisplayFor(modelItem => item.MenuID)').style.display='block'">
+                                            @:<img src=@Url.Content("~/Content/images/FoodAndDrink/Dessert/" + @item.MenuImage) alt="Avatar" style="width:100%">
+                                            @:<div class="container">
+                                                @:<center><label style="font-size:20px; color:#EC808D;">@Html.DisplayFor(modelItem => item.MenuName)</label></center>
+                                                @:<center><div style="background-color:black; font-size:17px; color:white; border-radius:20px;"><label>@Html.DisplayFor(modelItem => item.Price) บาท</label></div></center><br />
+                                            @:</div>
+                                        @:</div>
+                                    @:</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <!--Modals Dessert-->
+                                    <div id="Dessert-@Html.DisplayFor(modelItem => item.MenuID)" class="w3-modal">
+                                        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
+                                            <header class="w3-container" style="background-color:#EC808D;">
+                                                <span onclick="document.getElementById('Dessert-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'"
+                                                      class="w3-button w3-pink w3-large w3-display-topright">&times;</span>
+                                                <center><h2>รายละเอียด</h2></center>
+                                            </header>
+
+                                            <div class="w3-bar w3-border-bottom">
+                                                <br />
+                                                <div class="w3-cell-row">
+                                                    <div class="w3-container w3-cell" style="width:40%">
+
+                                                        <img width="100%" src=@Url.Content("~/Content/images/FoodAndDrink/dessert/" + @item.MenuImage) />
+
+                                                    </div>
+
+                                                    <div class="w3-container w3-cell" style="width:40%">
+                                                        <div class="w3-container">
+                                                            <br />
+                                                            <center><label style="align-content:center; font-size:20px; color:black;">@Html.DisplayFor(modelItem => item.MenuName)</label></center>
+                                                        </div>
+
+                                                        <br />
+
+                                                        <div class="w3-container">
+
+                                                            <center><label style="background-color:black; border-radius:10px; color:white; align-content:center; font-size:20px;">ราคา @Html.DisplayFor(modelItem => item.Price) บาท</label></center>
+
+                                                        </div>
+                                                        <br />
+
+
+                                                    </div>
+                                                    @{
+
+                                                        var text = "Ndessert";
+                                                    }
+
+                                                </div>
+                                                <div class="w3-cell-row">
+                                                    <div class="w3-container w3-cell w3-center" style="width:80%">
+                                                        <label style="align-content:center; font-size:20px; color:black;">จำนวน</label>
+                                                        <button class="w3-button w3-red w3-circle" id="decrease" onclick="decreaseValue('@text@Html.DisplayFor(modelItem => item.MenuID)')" value="Decrease Value">-</button>
+                                                        <input class="number" type="number" id="@text@Html.DisplayFor(modelItem => item.MenuID)" value="1" />
+                                                        <button class="w3-button w3-green w3-circle" id="increase" onclick="increaseValue('@text@Html.DisplayFor(modelItem => item.MenuID)')" value="Increase Value">+</button>
+
+                                                    </div>
+                                                </div>
+
+                                                <br />
+
+
+
+                                                <div align="right">
+                                                    <div class="w3-container w3-light-grey w3-padding">
+                                                        <button class="w3-red w3-button w3-border"
+                                                                onclick="document.getElementById('Dessert-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'">
+                                                            ยืนยัน
+                                                        </button>
+
+
+
+                                                        <button class="w3-button  w3-white w3-border"
+                                                                onclick="document.getElementById('Dessert-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'">
+                                                            ยกเลิก
+                                                        </button>
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!--Drinks-->
                 <div id="Drinks" class="tabcontent">
-                    <h3>เครื่องดื่ม</h3>
-                    <p>Who we are and what we do.</p>
+                    <div class="w3-container w3-cell">
+                        <div class="w3-row">
+                            @foreach (var item in Model)
+                            {
+                                if (item.Type.Equals("Drinks"))
+                                {
+                                    @:<div class="w3-container w3-quarter">
+
+
+
+
+
+
+
+
+                                        @:<div style="cursor: pointer;" class="card w3-white" width="100%" onclick="document.getElementById('Drinks-@Html.DisplayFor(modelItem => item.MenuID)').style.display='block'">
+                                            @:<img src=@Url.Content("~/Content/images/FoodAndDrink/Drinks/" + @item.MenuImage) alt="Avatar" style="width:100%">
+                                            @:<div class="container">
+                                                @:<center><label style="font-size:20px; color:#EC808D;">@Html.DisplayFor(modelItem => item.MenuName)</label></center>
+                                                @:<center><div style="background-color:black; font-size:17px; color:white; border-radius:20px;"><label>@Html.DisplayFor(modelItem => item.Price) บาท</label></div></center><br />
+                                            @:</div>
+                                        @:</div>
+                                    @:</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <!--Modals Drinks-->
+                                    <div id="Drinks-@Html.DisplayFor(modelItem => item.MenuID)" class="w3-modal">
+                                        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
+                                            <header class="w3-container" style="background-color:#EC808D;">
+                                                <span onclick="document.getElementById('Drinks-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'"
+                                                      class="w3-button w3-pink w3-large w3-display-topright">&times;</span>
+                                                <center><h2>รายละเอียด</h2></center>
+                                            </header>
+
+                                            <div class="w3-bar w3-border-bottom">
+                                                <br />
+                                                <div class="w3-cell-row">
+                                                    <div class="w3-container w3-cell" style="width:40%">
+
+                                                        <img width="100%" src=@Url.Content("~/Content/images/FoodAndDrink/drinks/" + @item.MenuImage) />
+
+                                                    </div>
+
+                                                    <div class="w3-container w3-cell" style="width:40%">
+                                                        <div class="w3-container">
+                                                            <br />
+                                                            <center><label style="align-content:center; font-size:20px; color:black;">@Html.DisplayFor(modelItem => item.MenuName)</label></center>
+                                                        </div>
+
+                                                        <br />
+
+                                                        <div class="w3-container">
+
+                                                            <center><label style="background-color:black; border-radius:10px; color:white; align-content:center; font-size:20px;">ราคา @Html.DisplayFor(modelItem => item.Price) บาท</label></center>
+
+                                                        </div>
+                                                        <br />
+
+
+                                                    </div>
+                                                    @{
+
+                                                        var text = "Ndrinks";
+                                                    }
+
+                                                </div>
+                                                <div class="w3-cell-row">
+                                                    <div class="w3-container w3-cell w3-center" style="width:80%">
+                                                        <label style="align-content:center; font-size:20px; color:black;">จำนวน</label>
+                                                        <button class="w3-button w3-red w3-circle" id="decrease" onclick="decreaseValue('@text@Html.DisplayFor(modelItem => item.MenuID)')" value="Decrease Value">-</button>
+                                                        <input class="number" type="number" id="@text@Html.DisplayFor(modelItem => item.MenuID)" value="1" />
+                                                        <button class="w3-button w3-green w3-circle" id="increase" onclick="increaseValue('@text@Html.DisplayFor(modelItem => item.MenuID)')" value="Increase Value">+</button>
+
+                                                    </div>
+                                                </div>
+
+                                                <br />
+
+
+
+                                                <div align="right">
+                                                    <div class="w3-container w3-light-grey w3-padding">
+                                                        <button class="w3-red w3-button w3-border"
+                                                                onclick="document.getElementById('Drinks-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'">
+                                                            ยืนยัน
+                                                        </button>
+
+
+
+                                                        <button class="w3-button  w3-white w3-border"
+                                                                onclick="document.getElementById('Drinks-@Html.DisplayFor(modelItem => item.MenuID)').style.display='none'">
+                                                            ยกเลิก
+                                                        </button>
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                }
+                            }
+                        </div>
+                    </div>
                 </div>
 
             </td>
@@ -275,9 +899,12 @@ input[type=number]::-webkit-outer-spin-button {
 
 
     </table>
+    <!--Test Button-->
+    <button class="w3-button  w3-white w3-border" onclick="document.getElementById('id01').style.display='block'">
+        แก้ไข
+    </button>
 
-
-
+    <!--Modals Drinks-->
     <div id="id01" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
             <header class="w3-container" style="background-color:#EC808D;">
@@ -289,72 +916,112 @@ input[type=number]::-webkit-outer-spin-button {
             <div class="w3-bar w3-border-bottom">
                 <br />
                 <div class="w3-cell-row">
+
+                    <br />
+                    <br />
                     <div class="w3-container w3-cell" style="width:40%">
 
-                        <img width="100%" src="~/Content/images/FoodAndDrink/จานเดียว/f1_1.png" />
+                        <center><img src="/Content/images/FoodAndDrink/%e0%b8%88%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%94%e0%b8%b5%e0%b8%a2%e0%b8%a7/f1_5.png" alt="Avatar" style="width:100%"></center>
 
                     </div>
 
-                    <div class="w3-container w3-cell" style="width:40%">
-                        <div class="w3-container">
-                            <br />
-                            <center><label style="align-content:center; font-size:20px; color:black;">ข้าวหน้าหมู</label></center>
-                            </div>
 
-                        <br />
+                    <br /><br />
 
-                        <div class="w3-container">
-
-                            <center><label style="background-color:black; border-radius:10px; color:white; align-content:center; font-size:20px;">ราคา 100 บาท</label></center>
-
-                        </div>
-                        <br />
-                       
-
-                        </div>
-                    
-                    
-            </div>
+                </div>
                 <div class="w3-cell-row">
                     <div class="w3-container w3-cell w3-center" style="width:80%">
                         <label style="align-content:center; font-size:20px; color:black;">จำนวน</label>
-                        <button class="w3-button w3-red w3-circle" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</button>
-                        <input type="number" id="number" value="1" />
-                        <button class="w3-button w3-green w3-circle" id="increase" onclick="increaseValue()" value="Increase Value">+</button>
-                        
-                        </div>
-                   
-                        
-                   
+                        <button class="w3-button w3-red w3-circle" id="decrease" onclick="decreaseValue('id01')" value="Decrease Value">-</button>
+                        <input class="number" type="number" id="id01" value="1" />
+                        <button class="w3-button w3-green w3-circle" id="increase" onclick="increaseValue('id01')" value="Increase Value">+</button>
 
                     </div>
+                </div>
+
                 <br />
-                    <div align="right">
-                        <div class="w3-container w3-light-grey w3-padding">
-                            <button class="w3-red w3-button w3-border"
-                                    onclick="document.getElementById('id02').style.display='none'">
-                                ยืนยัน
-                            </button>
 
 
 
-                            <button class="w3-button  w3-white w3-border"
-                                    onclick="document.getElementById('id01').style.display='none'">
-                                ยกเลิก
-                            </button>
+                <div align="right">
+                    <div class="w3-container w3-light-grey w3-padding">
+                        <button class="w3-red w3-button w3-border"
+                                onclick="document.getElementById('id01').style.display='none'">
+                            ยืนยัน
+                        </button>
 
 
-                        </div>
+
+                        <button class="w3-button  w3-white w3-border"
+                                onclick="document.getElementById('id01').style.display='none'">
+                            ยกเลิก
+                        </button>
+
 
                     </div>
 
                 </div>
-    </div>
+
+            </div>
         </div>
+    </div>
 
 
 
-    สวัสดี
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <table width="70%" align="center">
+        <tr>
+            <td class="font-size:17px; background-color:lightgrey;">
+
+
+
+                <div class="w3-twothird w3-container">
+                    <div class="w3-row w3-center" style="background-color:#EC808D;">เมนูของคุณ</div>
+                    <div class="w3-row w3-center w3-white" style="background-color:#EC808D;">
+
+                        <table width="100%">
+
+
+                            <tbody id="tableMenu">
+                            </tbody>
+
+
+
+
+
+                        </table>
+
+
+
+                    </div>
+                </div>
+
+                <div class="w3-third w3-container">
+                    <div class="w3-row w3-center" style="background-color:#EC808D;">ราคารวม</div>
+                    <div class="w3-row w3-center w3-white" style="background-color:#EC808D;">space</div>
+                </div>
+            </td>
+        </tr>
+
+
+    </table>
+
+
+
+
+
 
 
 </body>
@@ -382,21 +1049,127 @@ input[type=number]::-webkit-outer-spin-button {
 document.getElementById("defaultOpen").click();
 
 
-    function increaseValue() {
-  var value = parseInt(document.getElementById('number').value, 10);
+    function increaseValue(textID) {
+        console.log(document.getElementById(textID).value);
+        var value = parseInt(document.getElementById(textID).value);
+       
   value = isNaN(value) ? 0 : value;
   value++;
-  document.getElementById('number').value = value;
+  document.getElementById(textID).value = value;
 }
+    function decreaseValue(textID) {
+        console.log(document.getElementById(textID).value);
+        var value = parseInt(document.getElementById(textID).value);
+       
 
-function decreaseValue() {
-  var value = parseInt(document.getElementById('number').value, 10);
+
   value = isNaN(value) ? 0 : value;
   value < 1 ? value = 1 : '';
   value--;
-  document.getElementById('number').value = value;
-}
+  document.getElementById(textID).value = value;
+    }
+
+
+    var Inputname="50";
+    var order_menuID = [];
+    var order_pic = [];
+    var order_name = [];
+    var order_qty = [];
+    var order_price = [];
+    var i=0;
+
+    
+
+    function setValue(menuID, pic ,name, qtyID,price) {
+
+      
+         
+       i++;
+
+        order_menuID[i] = menuID;
+        order_pic[i] = pic;
+        order_name[i] = name;
+        order_qty[i] = document.getElementById(qtyID).value;
+        order_price[i] = price;
+
+
+        
+    }
+
+   
+
+
+     $(document).ready(function(){
+         $(".add-row").click(function () {
+             var menuID =  order_menuID[i]; 
+            var pic =  order_pic[i];     
+            var name = order_name[i];
+             var qty = order_qty[i] ;
+            var price =  order_price[i];
+             var count = 0;
+
+             //Check Value
+             /* $.each(order_menuID, function (index, value) {
+                  if (value == menuID) {
+                      console.log(value + ' same : ' + menuID);
+                      
+                  }
+                   
+                });*/
+    
+             
+
+             var markup = '<tr><td><img width="100px" src="/Content/images/FoodAndDrink/%e0%b8%88%e0%b8%b2%e0%b8%99%e0%b9%80%e0%b8%94%e0%b8%b5%e0%b8%a2%e0%b8%a7/' + pic + '"></td><td>' + name + '</td><td><label id ="' + menuID + '">' + qty + ' จาน</label></td><td>' + price*qty + ' บาท</td><td>'
+                + '<button class="w3-button w3-blue w3-border w3-border-black w3-round-large deleteRowButton">Edit</button>'
+                + '</td><td><button class="w3-button w3-red w3-border w3-border-black w3-round-large deleteRowButton">X</button></td></tr>';
+
+             var j;
+
+             console.log('MenuID = ' + menuID);
+             console.log('order_menuID0 = ' + order_menuID[0]);
+
+             var changeQty = 0;
+
+             for (j = 1 ; j <order_menuID.length ; j++){
+                
+                  if (order_menuID[j-1] == menuID) {
+                      console.log(order_menuID[j] + ' same2 : ' + menuID);
+
+                      changeQty = parseInt(order_qty[j-1]) + parseInt(qty) + ' จาน';
+                      $('#' + menuID).text(changeQty);
+                      markup = "";
+                  }
+             }
+
+
+             document.getElementById("tableMenu");
+            $("#tableMenu").append(markup);
+            
+            
+            
+            $('.deleteRowButton').click(function () {
+                $(this).closest('tr').remove();
+              order_menuID.pop();
+                order_pic.pop();
+                order_name.pop();
+                order_qty.pop();
+                order_price.pop();
+             });
+            
+
+        });
+        
+        
+    });    
+
+
 </script>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
 
 
