@@ -39,6 +39,7 @@
         }
 
         .dropdown {
+           
             float: right;
             overflow: hidden;
         }
@@ -55,8 +56,11 @@
             }
 
         .dropdown-content {
+            
+           
+         
             display: none;
-            position: absolute;
+            position:absolute;
             background-color: #f9f9f9;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -90,16 +94,23 @@
             font-size: 17pt;
             color: red;
         }
-
+        .sizeDrop{
+            width:200px;
+        }
         @@media screen and (max-width: 700px) {
             .topnav a:not(:first-child), .dropdown .dropbtn {
+                
                 display: none;
             }
-
+           .topnav .dropbtn .dropdown-content{
+              
+                display:none;
+            }
             .topnav a.icon {
                 float: right;
                 display: block;
             }
+           
         }
 
         @@media screen and (max-width: 700px) {
@@ -123,7 +134,8 @@
                     float: none;
                 }
 
-                .topnav.responsive .dropdown-content {
+                .topnav.responsive .dropdown-content{
+                    
                     position: relative;
                 }
 
@@ -144,7 +156,6 @@
 
     <title>@ViewBag.Title - My ASP.NET Application</title>
 
-
 </head>
 <body>
 
@@ -162,16 +173,16 @@
        
         <a href="#" style="transition:0.2s; font-size:20px;" class="w3-padding-16">โปรโมชั่น</a>
         <a href="#" style="transition:0.2s; font-size:20px;" class="w3-padding-16">แผนที่</a>
-        <div class="dropdown">
-            <button style="transition:0.2s; font-size:20px;" class="dropbtn">
-                <img width="30" src="https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/48391951_1979689462120049_3758752762377011200_n.png?_nc_cat=111&_nc_oc=AQnyE31ODqTqDjsxLl5_Nuny0ioOt5x-iGN7MPk7GWHWQGO4HllFu4GwXKktoG_8yu8&_nc_ht=scontent.fbkk14-1.fna&oh=7ae206fa81b13a33d959e4e7f5bfb44f&oe=5E06A13A" /> &nbsp;&nbsp; อนันต์ยศ
-                <i class="fa fa-caret-down"></i>
+        
+        <div class="dropdown w3-col sizeDrop" id="dropdown">
+            <button style="transition:0.2s; font-size:20px;width:200px" class="dropbtn"> 
+                @Session["Username"]&nbsp; &nbsp;<i class="fa fa-caret-down w3-right"></i>
             </button>
-            <div class="dropdown-content">
+            <div class="dropdown-content sizeDrop">
                 <a class ="" href="#">ประวัติการจอง</a>
-                <a href="#">ออกจากระบบ</a>
+               @Html.ActionLink("ออกจากระบบ" , "Logout" ,"Home");
             </div>
-        </div>
+        </div> 
 
         <a href="javascript:void(0);" style="font-size:15px;" class="icon" onClick="myFunction()">&#9776;</a>
     </div>
@@ -205,7 +216,7 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
+   
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

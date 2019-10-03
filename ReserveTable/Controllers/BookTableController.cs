@@ -16,7 +16,7 @@ namespace ReserveTable.Controllers
         Menu menu = new Menu();
 
         // GET: BookTable
-        public ActionResult Index()
+       public ActionResult Index()
         {
             return View();
         }

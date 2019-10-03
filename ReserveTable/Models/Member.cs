@@ -18,12 +18,9 @@ namespace ReserveTable.Models
         public Nullable<int> AccountID { get; set; }
         public string FirstName { get; set; }
         public string SurName { get; set; }
-        public string Gender { get; set; }
-        public Nullable<System.DateTime> BirthDate { get; set; }
         public string PhoneNo { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-    
-        public virtual Account Account { get; set; }
+        public string img { get; set; }
     }
 }
